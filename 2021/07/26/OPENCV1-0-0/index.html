@@ -227,7 +227,7 @@
 <h4 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h4><p>Create a New Visual Studio project C++ console.</p>
 <p>Set the platform target to x64.</p>
 <h4 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h4><p>Add Directories by going to Project-Properties-Configuration Properties. （项目 - 属性 -  配置属性）</p>
-<p>VC++目录 - 引用目录 &amp;&amp; 库目录</p>
+<p>VC++目录 - 包含目录 &amp;&amp; 库目录</p>
 <p>Add build directories <code>D:\opencv\build\include</code> </p>
 <p>Add Library directories <code>D:\opencv\build\x64\vc15\lib</code> </p>
 <p>链接器 - 输入</p>
@@ -459,5 +459,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
