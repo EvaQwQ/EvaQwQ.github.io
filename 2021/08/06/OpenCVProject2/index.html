@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Eva.Q">
+    
+    <title>
+        
+            OpenCV (学长走路背景) |
+        
+        EVA&#39;S WONDERLAND
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"It is the time you have wasted for your rose that makes your rose so important."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                EVA&#39;S WONDERLAND
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">OpenCV (学长走路背景)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Eva.Q</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-08-06 09:20:21
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/HDU-s-Learning/">HDU&#39;s Learning</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OpenCV/">OpenCV</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>小作业——继续跟踪</p>
+<a id="more"></a>
+<p>这次的背景有一只学长路过</p>
+<p><img src="\img\ball2.png" style="zoom:30%;" /></p>
+<p>所以不能用动态检测，只能用颜色检测啦！！！</p>
+<p>（ps. 动态检测是啥，其实我也没了解很多，我以为大家都在用颜色检测，后来才知道学长学姐上一个小作业是用动态检测的，所以问学长要了动态检测的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/video/background_segm.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Train = <span class="number">50</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Ptr&lt;BackgroundSubtractorMOG2&gt; mog = createBackgroundSubtractorMOG2(<span class="number">100</span>, <span class="number">25</span>, <span class="literal">false</span>); <span class="comment">// 背景消去 </span></span><br><span class="line">	<span class="comment">//bgsubtractor-&gt;setVarThreshold(20);</span></span><br><span class="line">	Mat foreGround;</span><br><span class="line">	Mat backGround;</span><br><span class="line">	<span class="keyword">int</span> trainCounter = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">bool</span> dynamicDetect = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	namedWindow(<span class="string">&quot;src&quot;</span>, WINDOW_FREERATIO);</span><br><span class="line">	namedWindow(<span class="string">&quot;foreground&quot;</span>, WINDOW_FREERATIO);</span><br><span class="line"></span><br><span class="line">	<span class="function">VideoCapture <span class="title">cap</span><span class="params">(<span class="string">&quot;Resources/task3.mp4&quot;</span>)</span></span>; </span><br><span class="line">	<span class="keyword">if</span> (!cap.isOpened())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Fail to open!&quot;</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Mat src;</span><br><span class="line">	Mat kernel = getStructuringElement(MORPH_RECT, Size(<span class="number">3</span>, <span class="number">3</span>)); <span class="comment">// 开操作去噪声 </span></span><br><span class="line">	<span class="keyword">bool</span> stop = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">while</span> (!stop)</span><br><span class="line">	&#123;</span><br><span class="line">		cap &gt;&gt; src;</span><br><span class="line">		<span class="keyword">if</span> (src.empty())</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (dynamicDetect)</span><br><span class="line">		&#123;</span><br><span class="line">			mog-&gt;apply(src, foreGround, <span class="number">0.005</span>);</span><br><span class="line">			morphologyEx(foreGround, foreGround, MORPH_OPEN, kernel);</span><br><span class="line">			<span class="comment">//图像处理过程</span></span><br><span class="line">			medianBlur(foreGround, foreGround, <span class="number">3</span>);</span><br><span class="line">			dilate(foreGround, foreGround, Mat(), Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="number">3</span>);</span><br><span class="line">			erode(foreGround, foreGround, Mat(), Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="number">6</span>);</span><br><span class="line">			dilate(foreGround, foreGround, Mat(), Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="number">3</span>);</span><br><span class="line">			imshow(<span class="string">&quot;foreground&quot;</span>, foreGround);</span><br><span class="line">			<span class="keyword">if</span> (trainCounter &lt; Train)<span class="comment">//训练期间所得结果为不准确结果，不应作为后续</span></span><br><span class="line">			&#123;</span><br><span class="line">				Mat findc;</span><br><span class="line">				foreGround.copyTo(findc);</span><br><span class="line">				<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point&gt;&gt; contours;</span><br><span class="line">				findContours(findc, contours, RETR_EXTERNAL, CHAIN_APPROX_NONE);        <span class="comment">//寻找轮廓</span></span><br><span class="line"></span><br><span class="line">				<span class="comment">//targets.clear();</span></span><br><span class="line">				<span class="keyword">const</span> <span class="keyword">int</span> maxArea = <span class="number">200</span>;</span><br><span class="line">				<span class="keyword">size_t</span> s = contours.size();</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s; i++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">double</span> area = <span class="built_in">abs</span>(contourArea(contours[i]));</span><br><span class="line">					<span class="keyword">if</span> (area &gt; maxArea)</span><br><span class="line">					&#123;</span><br><span class="line">						Rect mr = boundingRect(Mat(contours[i]));</span><br><span class="line">						rectangle(src, mr, Scalar(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>, <span class="number">8</span>, <span class="number">0</span>);</span><br><span class="line">						<span class="comment">//targets.push_back(mr);</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//string text;					</span></span><br><span class="line">				<span class="keyword">char</span> text[<span class="number">50</span>];</span><br><span class="line">				sprintf_s(text, <span class="string">&quot;background training -%d- ...&quot;</span>, trainCounter);</span><br><span class="line">				putText(src, text, Point(<span class="number">50</span>, <span class="number">50</span>), <span class="number">3</span>, <span class="number">1</span>, Scalar(<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">2</span>, <span class="number">8</span>, <span class="literal">false</span>);</span><br><span class="line">				<span class="comment">//delete[] text;</span></span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//detects.clear();</span></span><br><span class="line">				Mat findc;</span><br><span class="line">				foreGround.copyTo(findc);</span><br><span class="line">				<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point&gt;&gt; contours;</span><br><span class="line">				cv::findContours(findc, contours, RETR_EXTERNAL, CHAIN_APPROX_NONE);</span><br><span class="line">				<span class="keyword">const</span> <span class="keyword">int</span> maxArea = <span class="number">200</span>;</span><br><span class="line">				<span class="keyword">size_t</span> s = contours.size();</span><br><span class="line">				RNG rng;</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s; i++)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">double</span> area = <span class="built_in">abs</span>(contourArea(contours[i]));</span><br><span class="line">						<span class="keyword">if</span> (area &gt; maxArea)</span><br><span class="line">						&#123;</span><br><span class="line">							Scalar sca_color = Scalar(rng.uniform(<span class="number">0</span>, <span class="number">256</span>), rng.uniform(<span class="number">0</span>, <span class="number">256</span>), rng.uniform(<span class="number">0</span>, <span class="number">256</span>));</span><br><span class="line">							Rect mr = boundingRect(Mat(contours[i]));</span><br><span class="line">							rectangle(src, mr, sca_color, <span class="number">2</span>, <span class="number">8</span>, <span class="number">0</span>);</span><br><span class="line">							<span class="comment">//可以对动态目标进行相应操作</span></span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			trainCounter++;</span><br><span class="line">		&#125;</span><br><span class="line">		imshow(<span class="string">&quot;src&quot;</span>, src);</span><br><span class="line">		<span class="keyword">if</span> (waitKey(<span class="number">30</span>) == <span class="number">27</span>) <span class="comment">//Esc键退出    </span></span><br><span class="line">		&#123;</span><br><span class="line">			stop = <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另附相关资料</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37901643/article/details/72841289" >https://blog.csdn.net/m0_37901643/article/details/72841289<i class="fas fa-external-link-alt"></i></a></p>
+<p>%完了动态检测，还是学习一波颜色检测吧 ~ ~</p>
+<p>冲冲冲！！！</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><p>（根据之前颜色检测的代码来魔改</p>
+<p>首先 需要用 <code>colorPicker</code> 检测出需要检测的颜色的 <code>HSV</code> 三个分量的最大最小值。</p>
+<p>然后就可以改代码了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/imgcodecs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/core.hpp&gt;	</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line">Mat img;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; newPoints;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; myColors&#123; &#123;<span class="number">0</span>,<span class="number">142</span>,<span class="number">120</span>,<span class="number">179</span>,<span class="number">255</span>,<span class="number">255</span>&#125;, <span class="comment">// 橙色（hmin smin vmin hmax smax vmax）</span></span><br><span class="line">								&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125; &#125;; <span class="comment">// 绿色（hmin smin vmin hmax smax vmax）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;Scalar&gt; myColorValues&#123; &#123;<span class="number">255</span>,<span class="number">0</span>,<span class="number">255</span>&#125;, <span class="comment">// 蓝色</span></span><br><span class="line">								&#123;<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>&#125; &#125;; <span class="comment">// 绿色</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//! 获取轮廓</span></span><br><span class="line"><span class="function">Point <span class="title">getContours</span><span class="params">(Mat imgDil)</span> </span>&#123; <span class="comment">// imgDil是传入的扩张边缘的图像用来查找轮廓，img是要在其上绘制轮廓的图像</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point&gt;&gt; contours; <span class="comment">// 轮廓检测到的轮廓。每个轮廓线存储为一个点的向量</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;Vec4i&gt; hierarchy; <span class="comment">// 包含关于映像拓扑的信息  typedef Vec&lt;int, 4&gt; Vec4i;具有4个整数值</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//在二值图像中查找轮廓。该函数利用该算法从二值图像中提取轮廓</span></span><br><span class="line">	findContours(imgDil, contours, hierarchy, RETR_LIST, CHAIN_APPROX_SIMPLE);</span><br><span class="line">	<span class="comment">//drawContours(img, contours, -1, Scalar(255, 0, 255), 2); // img：要绘制轮廓在什么图片上，contours：要绘制的轮廓，-1定义要绘制的轮廓号（-1表示所有轮廓），Saclar表示轮廓颜色，2表示厚度</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point&gt;&gt; conPoly(contours.size()); <span class="comment">// conploy的数量应小于contours</span></span><br><span class="line">	<span class="function"><span class="built_in">vector</span>&lt;Rect&gt; <span class="title">boundRect</span><span class="params">(contours.size())</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">Point <span class="title">myPoint</span><span class="params">(<span class="number">0</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//过滤器：通过轮廓面积来过滤噪声</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; contours.size(); i++) &#123; <span class="comment">// 遍历检测到的轮廓</span></span><br><span class="line">		<span class="keyword">double</span> area = contourArea(contours[i]);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// cout &lt;&lt; area &lt;&lt; endl;</span></span><br><span class="line"></span><br><span class="line">		<span class="built_in">string</span> objectType;</span><br><span class="line">		<span class="keyword">if</span> (area &gt; <span class="number">10</span>) &#123; <span class="comment">// 轮廓面积＞10才绘制</span></span><br><span class="line">			<span class="comment">// 计算轮廓周长或凹坑长度。该函数计算了曲线长度和封闭的周长。</span></span><br><span class="line">			<span class="keyword">double</span> peri = arcLength(contours[i], <span class="literal">true</span>); <span class="comment">// 计算封闭轮廓周长</span></span><br><span class="line">			approxPolyDP(contours[i], conPoly[i], <span class="number">0.02</span> * peri, <span class="literal">true</span>); <span class="comment">// 以指定的精度近似多边形曲线。第二个参数conPloy[i]存储近似的结果，是输出。</span></span><br><span class="line"></span><br><span class="line">			boundRect[i] = boundingRect(conPoly[i]); <span class="comment">// 计算边界矩形</span></span><br><span class="line"></span><br><span class="line">			myPoint.x = boundRect[i].x;</span><br><span class="line">			myPoint.y = boundRect[i].y + boundRect[i].height / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (conPoly[i].size() &gt; <span class="number">4</span>)</span><br><span class="line">				putText(img, <span class="string">&quot;Small Ball&quot;</span>, Point(boundRect[i].x, boundRect[i].y - <span class="number">10</span>), FONT_HERSHEY_PLAIN, <span class="number">3</span>, Scalar(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">/*绘制边界矩形*/</span></span><br><span class="line">			rectangle(img, boundRect[i].tl(), boundRect[i].br(), Scalar(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">5</span>); <span class="comment">// tl()：topleft矩形左上角坐标 br()：bottom right矩形右下角坐标</span></span><br><span class="line">			drawContours(img, conPoly, i, Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> myPoint;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; findColor(Mat img) &#123;</span><br><span class="line">	Mat imgHSV;</span><br><span class="line">	cvtColor(img, imgHSV, COLOR_BGR2HSV); <span class="comment">// 转换图像到HSV空间，在其中查找颜色更加容易</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; myColors.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function">Scalar <span class="title">lower</span><span class="params">(myColors[i][<span class="number">0</span>], myColors[i][<span class="number">1</span>], myColors[i][<span class="number">2</span>])</span></span>;</span><br><span class="line">		<span class="function">Scalar <span class="title">upper</span><span class="params">(myColors[i][<span class="number">3</span>], myColors[i][<span class="number">4</span>], myColors[i][<span class="number">5</span>])</span></span>;</span><br><span class="line">		Mat mask;</span><br><span class="line">		inRange(imgHSV, lower, upper, mask); <span class="comment">// 定义颜色下限和上限，因为由于照明和不同的阴影，颜色的值将不完全相同，会是一个值的范围</span></span><br><span class="line">		<span class="comment">// imshow(to_string(i), mask);</span></span><br><span class="line">		Point myPoint = getContours(mask);</span><br><span class="line">		<span class="keyword">if</span> (myPoint.x != <span class="number">0</span> &amp;&amp; myPoint.y != <span class="number">0</span>) &#123; <span class="comment">// 没检测到东西的时候就不加入新点</span></span><br><span class="line">			newPoints.push_back(&#123; myPoint.x,myPoint.y,i &#125;); <span class="comment">// i为颜色索引</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newPoints;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawOnCanvas</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; newPoints, <span class="built_in">vector</span>&lt;Scalar&gt; myColorValues)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; newPoints.size(); i++) &#123;</span><br><span class="line">		line(img, Point(newPoints[i - <span class="number">1</span>][<span class="number">0</span>], newPoints[i - <span class="number">1</span>][<span class="number">1</span>]), Point(newPoints[i][<span class="number">0</span>], newPoints[i][<span class="number">1</span>]), Scalar(<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="function">VideoCapture <span class="title">cap</span><span class="params">(<span class="string">&quot;D:/Summer Holiday Practice/opencv learning/Resources/TrackBall2.mp4&quot;</span>)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (!cap.isOpened()) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;fail to open!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">bool</span> stop = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	namedWindow(<span class="string">&quot;Image&quot;</span>, WINDOW_FREERATIO);</span><br><span class="line">	<span class="keyword">while</span> (c = waitKey(<span class="number">1</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="number">27</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			stop = !stop;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!stop)</span><br><span class="line">		&#123;</span><br><span class="line">			cap &gt;&gt; img;</span><br><span class="line"></span><br><span class="line">			newPoints = findColor(img);</span><br><span class="line">			drawOnCanvas(newPoints, myColorValues);</span><br><span class="line">			imshow(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追踪效果如图：</p>
+<p><img src="\img\ball1.png" style="zoom:70%;" /></p>
+<h4 id="学了点儿啥呢"><a href="#学了点儿啥呢" class="headerlink" title="学了点儿啥呢"></a>学了点儿啥呢</h4><p>主要还是在 <code>colorPicker</code> 的使用上</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Mat imgHSV, mask;</span><br><span class="line"><span class="keyword">int</span> hmin = <span class="number">0</span>, smin = <span class="number">0</span>, vmin = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> hmax = <span class="number">179</span>, smax = <span class="number">255</span>, vmax = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	namedWindow(<span class="string">&quot;Trackbars&quot;</span>, (<span class="number">640</span>, <span class="number">200</span>));</span><br><span class="line">	createTrackbar(<span class="string">&quot;Hue Min&quot;</span>, <span class="string">&quot;Trackbars&quot;</span>, &amp;hmin, <span class="number">179</span>);</span><br><span class="line">	createTrackbar(<span class="string">&quot;Hue Max&quot;</span>, <span class="string">&quot;Trackbars&quot;</span>, &amp;hmax, <span class="number">179</span>);</span><br><span class="line">	createTrackbar(<span class="string">&quot;Sat Min&quot;</span>, <span class="string">&quot;Trackbars&quot;</span>, &amp;smin, <span class="number">255</span>);</span><br><span class="line">	createTrackbar(<span class="string">&quot;Sat Max&quot;</span>, <span class="string">&quot;Trackbars&quot;</span>, &amp;smax, <span class="number">255</span>);</span><br><span class="line">	createTrackbar(<span class="string">&quot;Val Min&quot;</span>, <span class="string">&quot;Trackbars&quot;</span>, &amp;vmin, <span class="number">255</span>);</span><br><span class="line">	createTrackbar(<span class="string">&quot;Val Max&quot;</span>, <span class="string">&quot;Trackbars&quot;</span>, &amp;vmax, <span class="number">255</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">		<span class="built_in">string</span> path = <span class="string">&quot;D:/Summer Holiday Practice/opencv learning/Resources/ball2.png&quot;</span>;</span><br><span class="line">		Mat img = imread(path);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*//  转换单通道</span></span><br><span class="line"><span class="comment">		if (img.channels() == 4) &#123;</span></span><br><span class="line"><span class="comment">			cv::cvtColor(img, imgHSV, COLOR_BGRA2GRAY);</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		else if (img.channels() == 3) &#123;</span></span><br><span class="line"><span class="comment">			cv::cvtColor(img, imgHSV, COLOR_BGR2GRAY);</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		else if (img.channels() == 2) &#123;</span></span><br><span class="line"><span class="comment">			cv::cvtColor(img, imgHSV, COLOR_BGR5652GRAY);</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		else if (img.channels() == 1) &#123;// 单通道的图片直接就不需要处理</span></span><br><span class="line"><span class="comment">			imgHSV = img;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		else &#123; // 负数,说明图有问题 直接返回</span></span><br><span class="line"><span class="comment">			return;</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line"></span><br><span class="line">		cvtColor(img, imgHSV, COLOR_BGR2HSV);</span><br><span class="line"></span><br><span class="line">		<span class="function">Scalar <span class="title">lower</span><span class="params">(hmin, smin, vmin)</span></span>;</span><br><span class="line">		<span class="function">Scalar <span class="title">upper</span><span class="params">(hmax, smax, vmax)</span></span>;</span><br><span class="line"></span><br><span class="line">		inRange(imgHSV, lower, upper, mask);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; hmin &lt;&lt; <span class="string">&#x27;,&#x27;</span> &lt;&lt; smin &lt;&lt; <span class="string">&#x27;,&#x27;</span> &lt;&lt; vmin &lt;&lt; <span class="string">&#x27;,&#x27;</span> &lt;&lt; hmax &lt;&lt; <span class="string">&#x27;,&#x27;</span> &lt;&lt; smax &lt;&lt; <span class="string">&#x27;,&#x27;</span> &lt;&lt; vmax &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		namedWindow(<span class="string">&quot;Image&quot;</span>, WINDOW_NORMAL);</span><br><span class="line">		namedWindow(<span class="string">&quot;Image mask&quot;</span>, WINDOW_NORMAL);</span><br><span class="line">		imshow(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">		imshow(<span class="string">&quot;Image mask&quot;</span>, mask);</span><br><span class="line">		waitKey(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h5><p>一是路径书写上，我总是会遇到无法正常打开图片或者视频的情况，且大部分情况下，都与路径书写有关，也试过把相对路径改成绝对路径。</p>
+<p>经过实践后，只能说，答案如下， <code>D:/Summer Holiday Practice/opencv learning/Resources/ball2.png</code> </p>
+<h5 id="cvtColor"><a href="#cvtColor" class="headerlink" title="cvtColor"></a>cvtColor</h5><p>之前 <code>cvtColor</code> 一直报错，后来去找资料，资料上说 <code>cvtColor</code> 不能处理灰度图，上面代码中注释掉的那一段，是在判断图片的通道数，并进行转换。</p>
+<p>虽然我并不是因为这个原因，但这也是值得注意的一个地方吧。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/08/07/thinking2/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">杂想2</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/08/05/OPENCV1-9/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenCV (用形态学运算变换图像)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2021 <i class="fas fa-heart icon-animate"></i> <a href="/">Eva.Q</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-text">Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%BA%86%E7%82%B9%E5%84%BF%E5%95%A5%E5%91%A2"><span class="nav-text">学了点儿啥呢</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Path"><span class="nav-text">Path</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cvtColor"><span class="nav-text">cvtColor</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

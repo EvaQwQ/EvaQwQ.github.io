@@ -221,11 +221,10 @@
         <div class="article-content markdown-body">
             <p><strong>数学形态学！？！？！</strong></p>
 <a id="more"></a>
+<p>recommendation: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/keen_zuxwang/article/details/72768092?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162806274916780264097167%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=162806274916780264097167&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-72768092.first_rank_v2_pc_rank_v29&amp;utm_term=morphologyex&amp;spm=1018.2226.3001.4187" >https://blog.csdn.net/keen_zuxwang/article/details/72768092?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162806274916780264097167%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=162806274916780264097167&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-72768092.first_rank_v2_pc_rank_v29&amp;utm_term=morphologyex&amp;spm=1018.2226.3001.4187<i class="fas fa-external-link-alt"></i></a></p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ol>
-<li><p><img src="\img\structureData.jpg" style="zoom:25%;" /></p>
-</li>
-<li><p>形态学滤波器通常用于二值图像。且在形态学中，我们习惯用高像素值（白）表示前景物体，低像素值（黑）表示背景物体，因此对图像做了反向处理。（反向处理后的图像称为原二值图像的 <strong>补码</strong> ）</p>
-</li>
+<li><img src="\img\structureData.jpg" style="zoom:25%;" /></li>
+<li>形态学滤波器通常用于二值图像。且在形态学中，我们习惯用高像素值（白）表示前景物体，低像素值（黑）表示背景物体，因此对图像做了反向处理。（反向处理后的图像称为原二值图像的 <strong>补码</strong> ）</li>
 </ol>
 <h4 id="形态学滤波器-——-腐蚀和膨胀"><a href="#形态学滤波器-——-腐蚀和膨胀" class="headerlink" title="形态学滤波器 —— 腐蚀和膨胀"></a>形态学滤波器 —— 腐蚀和膨胀</h4><p>滤波器的作用范围是由结构元素定义的像素集。在某个像素上应用结构元素时，结构元素的锚点与该像素对齐，所有与结构元素相交的像素就包含在当前集合中。<strong>腐蚀</strong> 就是把当前像素替换成所定义像素集合中的最小像素值，<strong>膨胀</strong> 就是把当前像素替换成所定义像素集合中的最大像素值。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// Read input image</span></span><br><span class="line">	cv::Mat image= cv::imread(<span class="string">&quot;binary.bmp&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (!image.data)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display the image</span></span><br><span class="line">	cv::namedWindow(<span class="string">&quot;Image&quot;</span>);</span><br><span class="line">	cv::imshow(<span class="string">&quot;Image&quot;</span>,image);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Erode the image</span></span><br><span class="line">	<span class="comment">// with the default 3x3 structuring element (SE)</span></span><br><span class="line">	cv::Mat eroded; <span class="comment">// the destination image</span></span><br><span class="line">	cv::erode(image,eroded,cv::Mat());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display the eroded image</span></span><br><span class="line">	cv::namedWindow(<span class="string">&quot;Eroded Image&quot;</span>);</span><br><span class="line">	cv::imshow(<span class="string">&quot;Eroded Image&quot;</span>,eroded);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Dilate the image</span></span><br><span class="line">	cv::Mat dilated; <span class="comment">// the destination image</span></span><br><span class="line">	cv::dilate(image,dilated,cv::Mat());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display the dilated image</span></span><br><span class="line">	cv::namedWindow(<span class="string">&quot;Dilated Image&quot;</span>);</span><br><span class="line">	cv::imshow(<span class="string">&quot;Dilated Image&quot;</span>,dilated);</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -278,6 +277,21 @@
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/08/06/OpenCVProject2/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenCV (学长走路背景)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">
