@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Eva.Q">
+    
+    <title>
+        
+            OpenCV (处理图像的颜色) |
+        
+        EVA&#39;S WONDERLAND
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"It is the time you have wasted for your rose that makes your rose so important."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                EVA&#39;S WONDERLAND
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">OpenCV (处理图像的颜色)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Eva.Q</span>
+                        <span class="level">Lv4</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-08-11 10:07:28
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/HDU-s-Learning/">HDU&#39;s Learning</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OpenCV/">OpenCV</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>COLORFUL ~ ~ ~ ~ ~ </p>
+<a id="more"></a>
+<h4 id="用策略设计模式比较颜色"><a href="#用策略设计模式比较颜色" class="headerlink" title="用策略设计模式比较颜色"></a>用策略设计模式比较颜色</h4><p>识别图像中具有某种颜色的像素</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>我们用策略设计模式把算法封装进类</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !defined COLORDETECT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLORDETECT</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/imgproc/imgproc.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorDetector</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// minimum acceptable distance</span></span><br><span class="line">	  <span class="keyword">int</span> maxDist; </span><br><span class="line"></span><br><span class="line">	  <span class="comment">// target color</span></span><br><span class="line">	  cv::Vec3b target; </span><br><span class="line"></span><br><span class="line">	  <span class="comment">// image containing color converted image</span></span><br><span class="line">	  cv::Mat converted;</span><br><span class="line">	  <span class="keyword">bool</span> useLab;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// image containing resulting binary map</span></span><br><span class="line">	  cv::Mat result;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// empty constructor</span></span><br><span class="line">	  <span class="comment">// default parameter initialization here</span></span><br><span class="line">	  ColorDetector() : maxDist(<span class="number">100</span>), target(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>), useLab(<span class="literal">false</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// extra constructor for Lab color space example</span></span><br><span class="line">	  ColorDetector(<span class="keyword">bool</span> useLab) : maxDist(<span class="number">100</span>), target(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>), useLab(useLab) &#123;&#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// full constructor</span></span><br><span class="line">	  ColorDetector(uchar blue, uchar green, uchar red, <span class="keyword">int</span> mxDist=<span class="number">100</span>, <span class="keyword">bool</span> useLab=<span class="literal">false</span>): maxDist(mxDist), useLab(useLab) &#123; </span><br><span class="line"></span><br><span class="line">		  <span class="comment">// target color</span></span><br><span class="line">		  setTargetColor(blue, green, red);</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Computes the distance from target color.</span></span><br><span class="line">	  <span class="function"><span class="keyword">int</span> <span class="title">getDistanceToTargetColor</span><span class="params">(<span class="keyword">const</span> cv::Vec3b&amp; color)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		  <span class="keyword">return</span> getColorDistance(color, target);</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Computes the city-block distance between two colors.</span></span><br><span class="line">	  <span class="function"><span class="keyword">int</span> <span class="title">getColorDistance</span><span class="params">(<span class="keyword">const</span> cv::Vec3b&amp; color1, <span class="keyword">const</span> cv::Vec3b&amp; color2)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="keyword">return</span> <span class="built_in">abs</span>(color1[<span class="number">0</span>]-color2[<span class="number">0</span>])+</span><br><span class="line">					<span class="built_in">abs</span>(color1[<span class="number">1</span>]-color2[<span class="number">1</span>])+</span><br><span class="line">					<span class="built_in">abs</span>(color1[<span class="number">2</span>]-color2[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">	 	  <span class="comment">// Or:</span></span><br><span class="line">		  <span class="comment">// return static_cast&lt;int&gt;(cv::norm&lt;int,3&gt;(cv::Vec3i(color[0]-color2[0],color[1]-color2[1],color[2]-color2[2])));</span></span><br><span class="line">		  </span><br><span class="line">		  <span class="comment">// Or:</span></span><br><span class="line">		  <span class="comment">// cv::Vec3b dist;</span></span><br><span class="line">		  <span class="comment">// cv::absdiff(color,color2,dist);</span></span><br><span class="line">		  <span class="comment">// return cv::sum(dist)[0];</span></span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Processes the image. Returns a 1-channel binary image.</span></span><br><span class="line">	  <span class="function">cv::Mat <span class="title">process</span><span class="params">(<span class="keyword">const</span> cv::Mat &amp;image)</span></span>;</span><br><span class="line"></span><br><span class="line">	  <span class="function">cv::Mat <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> cv::Mat &amp;image)</span> </span>&#123;</span><br><span class="line">	  </span><br><span class="line">		  cv::Mat input;</span><br><span class="line">		 </span><br><span class="line">		  <span class="keyword">if</span> (useLab) &#123; <span class="comment">// Lab conversion</span></span><br><span class="line">			  cv::cvtColor(image, input, CV_BGR2Lab);</span><br><span class="line">		  &#125;</span><br><span class="line">		  <span class="keyword">else</span> &#123;</span><br><span class="line">			  input = image;</span><br><span class="line">		  &#125;</span><br><span class="line"></span><br><span class="line">		  cv::Mat output;</span><br><span class="line">		  <span class="comment">// compute absolute difference with target color</span></span><br><span class="line">		  cv::absdiff(input,cv::Scalar(target),output);</span><br><span class="line">	      <span class="comment">// split the channels into 3 images</span></span><br><span class="line">	      <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Mat&gt; images;</span><br><span class="line">	      cv::split(output,images);</span><br><span class="line">		  <span class="comment">// add the 3 channels (saturation might occurs here)</span></span><br><span class="line">	      output= images[<span class="number">0</span>]+images[<span class="number">1</span>]+images[<span class="number">2</span>];</span><br><span class="line">		  <span class="comment">// apply threshold</span></span><br><span class="line">          cv::threshold(output,  <span class="comment">// input image</span></span><br><span class="line">                      output,  <span class="comment">// output image</span></span><br><span class="line">                      maxDist, <span class="comment">// threshold (must be &lt; 256)</span></span><br><span class="line">                      <span class="number">255</span>,     <span class="comment">// max value</span></span><br><span class="line">                 cv::THRESH_BINARY_INV); <span class="comment">// thresholding type</span></span><br><span class="line">	</span><br><span class="line">	      <span class="keyword">return</span> output;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Getters and setters</span></span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Sets the color distance threshold.</span></span><br><span class="line">	  <span class="comment">// Threshold must be positive, otherwise distance threshold</span></span><br><span class="line">	  <span class="comment">// is set to 0.</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">setColorDistanceThreshold</span><span class="params">(<span class="keyword">int</span> distance)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="keyword">if</span> (distance&lt;<span class="number">0</span>)</span><br><span class="line">			  distance=<span class="number">0</span>;</span><br><span class="line">		  maxDist= distance;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Gets the color distance threshold</span></span><br><span class="line">	  <span class="function"><span class="keyword">int</span> <span class="title">getColorDistanceThreshold</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="keyword">return</span> maxDist;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Sets the color to be detected</span></span><br><span class="line">	  <span class="comment">// given in BGR color space</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">setTargetColor</span><span class="params">(uchar blue, uchar green, uchar red)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="comment">// BGR order</span></span><br><span class="line">		  target = cv::Vec3b(blue, green, red);</span><br><span class="line"></span><br><span class="line">		  <span class="keyword">if</span> (useLab) &#123;</span><br><span class="line">			  <span class="comment">// Temporary 1-pixel image</span></span><br><span class="line">			  <span class="function">cv::Mat <span class="title">tmp</span><span class="params">(<span class="number">1</span>, <span class="number">1</span>, CV_8UC3)</span></span>;</span><br><span class="line">			  tmp.at&lt;cv::Vec3b&gt;(<span class="number">0</span>, <span class="number">0</span>) = cv::Vec3b(blue, green, red);</span><br><span class="line"></span><br><span class="line">			  <span class="comment">// Converting the target to Lab color space </span></span><br><span class="line">			  cv::cvtColor(tmp, tmp, CV_BGR2Lab);</span><br><span class="line"></span><br><span class="line">			  target = tmp.at&lt;cv::Vec3b&gt;(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">		  &#125;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Sets the color to be detected</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">setTargetColor</span><span class="params">(cv::Vec3b color)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  target= color;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Gets the color to be detected</span></span><br><span class="line">	  <span class="function">cv::Vec3b <span class="title">getTargetColor</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="keyword">return</span> target;</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>这样就可以通过创建类的实施来部署算法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. Create image processor object</span></span><br><span class="line">ColorDetector cdetect;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Read input image</span></span><br><span class="line">cv::Mat image= cv::imread(<span class="string">&quot;boldt.jpg&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (image.empty())</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">cv::namedWindow(<span class="string">&quot;Original Image&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;Original Image&quot;</span>, image);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. Set input parameters</span></span><br><span class="line">cdetect.setTargetColor(<span class="number">230</span>,<span class="number">190</span>,<span class="number">130</span>); <span class="comment">// here blue sky</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. Process the image and display the result</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;result&quot;</span>);</span><br><span class="line">cv::Mat result = cdetect.process(image);</span><br><span class="line">cv::imshow(<span class="string">&quot;result&quot;</span>,result);</span><br></pre></td></tr></table></figure>
+<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>这个算法的核心过程非常简单，只是对每个像素进行循环扫描，把它的颜色和目标颜色做比较</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get the iterators</span></span><br><span class="line">cv::Mat_&lt;cv::Vec3b&gt;::const_iterator it= image.begin&lt;cv::Vec3b&gt;();</span><br><span class="line">cv::Mat_&lt;cv::Vec3b&gt;::const_iterator itend= image.end&lt;cv::Vec3b&gt;();</span><br><span class="line">cv::Mat_&lt;uchar&gt;::iterator itout= result.begin&lt;uchar&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// get the iterators of the converted image </span></span><br><span class="line"> <span class="keyword">if</span> (useLab) &#123;</span><br><span class="line">	it = converted.begin&lt;cv::Vec3b&gt;();</span><br><span class="line">	itend = converted.end&lt;cv::Vec3b&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// for each pixel</span></span><br><span class="line"><span class="keyword">for</span> ( ; it!= itend; ++it, ++itout) &#123;</span><br><span class="line">        </span><br><span class="line">	<span class="comment">// process each pixel ---------------------</span></span><br><span class="line">	<span class="comment">// compute distance from target color</span></span><br><span class="line">	<span class="keyword">if</span> (getDistanceToTargetColor(*it)&lt;maxDist) &#123;</span><br><span class="line">		*itout= <span class="number">255</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		*itout= <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// end of pixel processing ----------------</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>计算与目标色的差距</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Computes the distance from target color.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getDistanceToTargetColor</span><span class="params">(<span class="keyword">const</span> cv::Vec3b&amp; color)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> getColorDistance(color, target);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Computes the city-block distance between two colors.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getColorDistance</span><span class="params">(<span class="keyword">const</span> cv::Vec3b&amp; color1, <span class="keyword">const</span> cv::Vec3b&amp; color2)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">abs</span>(color1[<span class="number">0</span>]-color2[<span class="number">0</span>]) + <span class="built_in">abs</span>(color1[<span class="number">1</span>]-color2[<span class="number">1</span>]) + <span class="built_in">abs</span>(color1[<span class="number">2</span>]-color2[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="用-GrabCut-算法分割图像"><a href="#用-GrabCut-算法分割图像" class="headerlink" title="用 GrabCut 算法分割图像"></a>用 GrabCut 算法分割图像</h4><p><code>grabCut</code> 函数的用法非常简单，只需要输入一幅图像，并对一些像素做上 ”属于背景“ 或 ”属于前景“ 的标记即可。根据这个局部标记，算法将计算出整幅图像的 前景/背景分割线。</p>
+<p>一种指定输入图像局部前景/背景标签的方法是定义一个包含前景物体的矩形：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Rect <span class="title">rectangle</span><span class="params">(<span class="number">5</span>, <span class="number">70</span>, <span class="number">260</span>, <span class="number">120</span>)</span></span>; <span class="comment">// 矩形外部的像素会被标记为背景</span></span><br></pre></td></tr></table></figure>
+<p>调用函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// define bounding rectangle </span></span><br><span class="line"><span class="function">cv::Rect <span class="title">rectangle</span><span class="params">(<span class="number">50</span>,<span class="number">25</span>,<span class="number">210</span>,<span class="number">180</span>)</span></span>;</span><br><span class="line"><span class="comment">// the models (internally used)</span></span><br><span class="line">cv::Mat bgModel,fgModel; </span><br><span class="line"><span class="comment">// segmentation result</span></span><br><span class="line">cv::Mat result; <span class="comment">// segmentation (4 possible values)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// GrabCut segmentation</span></span><br><span class="line">cv::grabCut(image,    <span class="comment">// input image</span></span><br><span class="line">			result,   <span class="comment">// segmentation result</span></span><br><span class="line">			rectangle,<span class="comment">// rectangle containing foreground </span></span><br><span class="line">			bgModel, fgModel, <span class="comment">// models</span></span><br><span class="line">			<span class="number">5</span>,        <span class="comment">// number of iterations 迭代次数</span></span><br><span class="line">			cv::GC_INIT_WITH_RECT); <span class="comment">// use rectangle</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>cv::GC_INIT_WITH_RECT</code> 使用带边框的矩形模型</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the pixels marked as likely foreground</span></span><br><span class="line">cv::compare(result,cv::GC_PR_FGD,result,cv::CMP_EQ);</span><br><span class="line"></span><br><span class="line"><span class="function">cv::Mat <span class="title">foreground</span><span class="params">(image.size(), CV_8UC3, cv::Scalar(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">image.copyTo(foreground,result); <span class="comment">// bg pixels not copied</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>cv::GC_BGD</code> 明确属于背景的像素明确属于背景的像素（本例中矩形以外的像素）</p>
+<p><code>cv::GC_FGD</code> 明确属于前景的像素（本例中无）</p>
+<p><code>cv::GC_PR_BGD</code> 可能属于背景的像素</p>
+<p><code>cv::GC_PR_FGD</code> 可能属于前景的像素（本例中矩形之内像素的初始值）</p>
+</blockquote>
+<p>若想要提取全部前景像素，及值为 <code>cv::GC_FGD</code> 或 <code>cv::GC_PR_FGD</code> 的像素，可以检查第一位的值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = result&amp;<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>这可能是因为这几个常量别定义的值为1和3，而另外两个被定义为0和2.。</p>
+<h4 id="转换颜色表示法"><a href="#转换颜色表示法" class="headerlink" title="转换颜色表示法"></a>转换颜色表示法</h4><p><code>RGB颜色空间</code> 红绿蓝组合后可以产生色域很宽的各种颜色，与人类视觉系统对应。当三种颜色强度相同时就会取得灰度。但空间并不是 <strong>感知均匀的色彩空间</strong> ，所以计算颜色之间的差距并不是衡量两个颜色相似度的最好方法。</p>
+<p>为了解决这一问题，引入了一些具有 <strong>感知均匀特性</strong> 的颜色表示法。</p>
+<p><code>CIE L*a*b</code> 用欧几里得距离衡量两种颜色的相似度。</p>
+<p>在 process 方法中先把输入图像转换成 <code>CIE L*a*b</code> 色彩空间</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">cv::Mat <span class="title">ColorDetector::process</span><span class="params">(<span class="keyword">const</span> cv::Mat &amp;image)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// re-allocate binary map if necessary</span></span><br><span class="line">	  <span class="comment">// same size as input image, but 1-channel</span></span><br><span class="line">	  result.create(image.size(),CV_8U);</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Converting to Lab color space </span></span><br><span class="line">	  <span class="keyword">if</span> (useLab)</span><br><span class="line">		  cv::cvtColor(image, converted, CV_BGR2Lab);</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// get the iterators</span></span><br><span class="line">	  cv::Mat_&lt;cv::Vec3b&gt;::const_iterator it= image.begin&lt;cv::Vec3b&gt;();</span><br><span class="line">	  cv::Mat_&lt;cv::Vec3b&gt;::const_iterator itend= image.end&lt;cv::Vec3b&gt;();</span><br><span class="line">	  cv::Mat_&lt;uchar&gt;::iterator itout= result.begin&lt;uchar&gt;();</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// get the iterators of the converted image </span></span><br><span class="line">	  <span class="keyword">if</span> (useLab) &#123;</span><br><span class="line">		  it = converted.begin&lt;cv::Vec3b&gt;();</span><br><span class="line">		  itend = converted.end&lt;cv::Vec3b&gt;();</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// for each pixel</span></span><br><span class="line">	  <span class="keyword">for</span> ( ; it!= itend; ++it, ++itout) &#123;</span><br><span class="line">	  …………</span><br></pre></td></tr></table></figure>
+<p>转换后的变量包含颜色转换后的图像，被定义为类 <code>ColorDetector</code> 的一个属性</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorDetector</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// image containing color converted image</span></span><br><span class="line">	  cv::Mat converted;</span><br></pre></td></tr></table></figure>
+<p>输入的目标颜色也需要转换，需要让函数与上面的函数签名一样，即用户提供的颜色仍然是RGB格式的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setTargetColor</span><span class="params">(uchar blue, uchar green, uchar red)</span> </span>&#123;</span><br><span class="line">	<span class="function">Mat <span class="title">tmp</span><span class="params">(<span class="number">1</span>, <span class="number">1</span>, CV_8UC3)</span></span>;</span><br><span class="line">    tmp.at&lt;cv::Vec3d&gt;(<span class="number">0</span>, <span class="number">0</span>) = cv::Vec3d(blue, green, red);</span><br><span class="line">     </span><br><span class="line">    cv::cvtColor(tmp, tmp, CV_BGR2Lab);</span><br><span class="line">    </span><br><span class="line">    target = tmp.at&lt;cv::Vec3d&gt;(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="用色调、饱和度和亮度表示颜色（HSV"><a href="#用色调、饱和度和亮度表示颜色（HSV" class="headerlink" title="用色调、饱和度和亮度表示颜色（HSV)"></a>用色调、饱和度和亮度表示颜色（HSV)</h4><h5 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// convert into HSV space</span></span><br><span class="line">cv::Mat hsv;</span><br><span class="line">cv::cvtColor(image, hsv, CV_BGR2HSV);</span><br><span class="line"></span><br><span class="line"><span class="comment">// split the 3 channels into 3 images</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Mat&gt; channels;</span><br><span class="line">cv::split(hsv, channels);</span><br><span class="line"><span class="comment">// channels[0] is the Hue</span></span><br><span class="line"><span class="comment">// channels[1] is the Saturation</span></span><br><span class="line"><span class="comment">// channels[2] is the Value</span></span><br></pre></td></tr></table></figure>
+<h5 id="颜色用于检测：肤色检测"><a href="#颜色用于检测：肤色检测" class="headerlink" title="颜色用于检测：肤色检测"></a>颜色用于检测：肤色检测</h5><p><code>mask</code> 掩码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">detectHScolor</span><span class="params">(<span class="keyword">const</span> cv::Mat&amp; image,		<span class="comment">// input image </span></span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">double</span> minHue, <span class="keyword">double</span> maxHue,	<span class="comment">// Hue interval </span></span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">double</span> minSat, <span class="keyword">double</span> maxSat,	<span class="comment">// saturation interval</span></span></span></span><br><span class="line"><span class="function"><span class="params">	cv::Mat&amp; mask)</span> </span>&#123;				<span class="comment">// output mask</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// convert into HSV space</span></span><br><span class="line">	cv::Mat hsv;</span><br><span class="line">	cv::cvtColor(image, hsv, CV_BGR2HSV);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// split the 3 channels into 3 images</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Mat&gt; channels;</span><br><span class="line">	cv::split(hsv, channels);</span><br><span class="line">	<span class="comment">// channels[0] is the Hue</span></span><br><span class="line">	<span class="comment">// channels[1] is the Saturation</span></span><br><span class="line">	<span class="comment">// channels[2] is the Value</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Hue masking</span></span><br><span class="line">	cv::Mat mask1; <span class="comment">// below maxHue</span></span><br><span class="line">	cv::threshold(channels[<span class="number">0</span>], mask1, maxHue, <span class="number">255</span>, cv::THRESH_BINARY_INV);</span><br><span class="line">	cv::Mat mask2; <span class="comment">// over minHue</span></span><br><span class="line">	cv::threshold(channels[<span class="number">0</span>], mask2, minHue, <span class="number">255</span>, cv::THRESH_BINARY);</span><br><span class="line"></span><br><span class="line">	cv::Mat hueMask; <span class="comment">// hue mask</span></span><br><span class="line">	<span class="keyword">if</span> (minHue &lt; maxHue)</span><br><span class="line">		hueMask = mask1 &amp; mask2;</span><br><span class="line">	<span class="keyword">else</span> <span class="comment">// if interval crosses the zero-degree axis</span></span><br><span class="line">		hueMask = mask1 | mask2;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Saturation masking</span></span><br><span class="line">	<span class="comment">// below maxSat</span></span><br><span class="line">	cv::threshold(channels[<span class="number">1</span>], mask1, maxSat, <span class="number">255</span>, cv::THRESH_BINARY_INV);</span><br><span class="line">	<span class="comment">// over minSat</span></span><br><span class="line">	cv::threshold(channels[<span class="number">1</span>], mask2, minSat, <span class="number">255</span>, cv::THRESH_BINARY);</span><br><span class="line"></span><br><span class="line">	cv::Mat satMask; <span class="comment">// saturation mask</span></span><br><span class="line">	satMask = mask1 &amp; mask2;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// combined mask</span></span><br><span class="line">	mask = hueMask&amp;satMask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该函数的调用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// detect skin tone</span></span><br><span class="line">cv::Mat mask;</span><br><span class="line">detectHScolor(image, </span><br><span class="line">			  <span class="number">160</span>, <span class="number">10</span>, <span class="comment">// hue from 320 degrees to 20 degrees </span></span><br><span class="line">	 	   	  <span class="number">25</span>, <span class="number">166</span>, <span class="comment">// saturation from ~0.1 to 0.65</span></span><br><span class="line">			  mask);</span><br><span class="line"></span><br><span class="line"><span class="comment">// show masked image</span></span><br><span class="line"><span class="function">cv::Mat <span class="title">detected</span><span class="params">(image.size(), CV_8UC3, cv::Scalar(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</span></span>;</span><br><span class="line">image.copyTo(detected, mask);</span><br><span class="line">cv::imshow(<span class="string">&quot;Detection result&quot;</span>,detected);</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/08/11/%E5%B2%81%E6%9C%88%E7%A5%9E%E5%81%B7/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">岁月神偷</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '9zmOV2kEQ9zus2ce5RmpB8Vk-gzGzoHsz',
+                    appKey: 'MFrrae4FNMoBr993P56NRg0j',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'Speak something ~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+
+                        let author = 'Eva.Q';
+                        author && (author = author.toLocaleLowerCase());
+
+                        for (let vcard of vcards) {
+                            const vnick = vcard.querySelector('.vhead .vnick');
+                            if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                                vnick.innerHTML = `${author} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2021 <i class="fas fa-heart icon-animate"></i> <a href="/">Eva.Q</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E7%AD%96%E7%95%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BE%83%E9%A2%9C%E8%89%B2"><span class="nav-number">1.</span> <span class="nav-text">用策略设计模式比较颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">实现原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8-GrabCut-%E7%AE%97%E6%B3%95%E5%88%86%E5%89%B2%E5%9B%BE%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">用 GrabCut 算法分割图像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E9%A2%9C%E8%89%B2%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">转换颜色表示法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E8%89%B2%E8%B0%83%E3%80%81%E9%A5%B1%E5%92%8C%E5%BA%A6%E5%92%8C%E4%BA%AE%E5%BA%A6%E8%A1%A8%E7%A4%BA%E9%A2%9C%E8%89%B2%EF%BC%88HSV"><span class="nav-number">4.</span> <span class="nav-text">用色调、饱和度和亮度表示颜色（HSV)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.1.</span> <span class="nav-text">颜色空间转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E7%94%A8%E4%BA%8E%E6%A3%80%E6%B5%8B%EF%BC%9A%E8%82%A4%E8%89%B2%E6%A3%80%E6%B5%8B"><span class="nav-number">4.2.</span> <span class="nav-text">颜色用于检测：肤色检测</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
