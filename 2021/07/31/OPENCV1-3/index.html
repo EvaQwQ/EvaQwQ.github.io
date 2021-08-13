@@ -233,7 +233,7 @@
 
 \begin{vmatrix} 
 \pmb{X} \\ \pmb{Y} \\ \pmb{Z} \\ \pmb{1}
-\end{vmatrix}</script><h5 id="四种坐标系"><a href="#四种坐标系" class="headerlink" title="四种坐标系"></a>四种坐标系</h5><p><img src="\img\CoordinateSystem.png" style="zoom:60%;" /></p>
+\end{vmatrix}</script><h5 id="四种坐标系"><a href="#四种坐标系" class="headerlink" title="四种坐标系"></a>四种坐标系</h5><p><img src="\img\OpenCV\CoordinateSystem.png" style="zoom:60%;" /></p>
 <p>1、图像像素坐标系：表示场景中三维点在图像平面上的投影，其坐标原点在CCD图像平面的左上角，u轴平行于CCD平面水平向右，v轴垂直于u轴向下，坐标使用（u,v）来表示。注：这里的（u,v）表示的是该像素在数组中的列数和行数</p>
 <p>2、图像物理坐标系：其坐标原点在CCD图像平面的中心，x,y轴分别平行于图像像素坐标系的坐标轴，坐标用(x,y)表示。</p>
 <p>3、相机坐标系：以相机的光心为坐标系原点，X,Y轴平行于图像坐标系的X,Y轴，相机的光轴为Z轴，坐标系满足右手法则。注：这里所指的相机的光心可以简单的理解为相机透镜的几何中心</p>
@@ -275,18 +275,18 @@
 <li>校准相机</li>
 </ol>
 <h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a><strong>实现</strong></h5><p>OpenCV 推荐使用国际象棋棋盘的图案生成用于标定的三维场景点的集合。</p>
-<p><img src="\img\chessBoard.png" style="zoom:55%;" /></p>
+<p><img src="\img\OpenCV\chessBoard.png" style="zoom:55%;" /></p>
 <p>这个图案在每个方块的角点位置创建场景点；由于图案是平面的，可以假设棋盘位于 <strong>Z = 0,  X,Y 的坐标轴与网格对其的位置</strong> 。这样，标定时就只需从不同的视角拍摄棋盘图案。</p>
-<p><img src="\img\chessBoard2.png" style="zoom:115%;" /></p>
+<p><img src="\img\OpenCV\chessBoard2.png" style="zoom:115%;" /></p>
 <p><strong>检测角点</strong></p>
 <p>可以用OpenCV自带的函数自动检测棋盘图案中的角点。只需要提供一幅图像和棋盘尺寸（水平和垂直方向内部角点的数量），函数会返回图像中所有棋盘角点的位置，若无法找到图案，函数返回false。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出图像角点的向量</span></span><br><span class="line"><span class="built_in">vector</span>&lt;Point2f&gt; imageCorners;</span><br><span class="line"><span class="comment">//棋盘内部角点的数量</span></span><br><span class="line"><span class="function">Size <span class="title">boardSize</span><span class="params">(<span class="number">7</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="comment">//获得棋盘角点</span></span><br><span class="line"><span class="keyword">bool</span> foound = findChessboardCorners(image, boardSize, omageCorners);<span class="comment">//image 棋盘图案</span></span><br></pre></td></tr></table></figure>
 <p>棋盘内部角点数，如图</p>
-<p><img src="\img\corner.png" style="zoom:13%;" /></p>
+<p><img src="\img\OpenCV\corner.png" style="zoom:13%;" /></p>
 <p><strong>画角点</strong></p>
 <p>画出角点并用线条连接起来，连接次序即在想两种存储的次序。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawChessboardCorners(image, boardSize, imageCorners, found);</span><br></pre></td></tr></table></figure>
-<p><img src="\img\chessBoard3.png" style="zoom:55%;" /></p>
+<p><img src="\img\OpenCV\chessBoard3.png" style="zoom:55%;" /></p>
 <p><strong>指定三维点</strong></p>
 <p>自由选择单位，如厘米或英寸等。</p>
 <p>为了方便起见我们将方块的边长定位单位，这样可令点的坐标如 <code>（0，0，0）（6，4，0）</code> 这样便于表示。</p>

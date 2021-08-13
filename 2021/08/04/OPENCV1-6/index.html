@@ -230,11 +230,11 @@
 <li><p>利用单应变换将每个相机的图像平面投影到完全对齐的虚拟平面上。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算单应变换矫正量</span></span><br><span class="line">Mat h1, h2;</span><br><span class="line">stereoRectifyUncalibrated(points1, points2, fundamental, image1.size(), h1, h2);</span><br><span class="line"><span class="comment">// 用变换实现图像校正</span></span><br><span class="line">Mat rectified1;</span><br><span class="line">warpPerspective(image1, rectified1, h1, image1.size());</span><br><span class="line">Mat rectified2;</span><br><span class="line">warpPerspective(image2, rectified2, h2, image1.size()); <span class="comment">// ??? image1 or image2</span></span><br><span class="line"><span class="comment">// 计算视差</span></span><br><span class="line">Mat disparity;</span><br><span class="line">Ptr&lt;StereoMatcher&gt; pStereo = StereoSGBM::create(<span class="number">0</span>, <span class="number">32</span>, <span class="number">5</span>); <span class="comment">// 最小视差，最大视差，块的大小</span></span><br><span class="line">pStereo -&gt; compute(rectified1, rectified2, disparity);</span><br></pre></td></tr></table></figure>
 <p>部分对极线</p>
-<p><img src="\img\stereo1.jpg" style="zoom:13%;" /></p>
+<p><img src="\img\OpenCV\stereo1.jpg" style="zoom:13%;" /></p>
 <p>经矫正的图像对</p>
-<p><img src="\img\stereo2.jpg" style="zoom:13%;" /></p>
+<p><img src="\img\OpenCV\stereo2.jpg" style="zoom:13%;" /></p>
 <p>视差图：亮的地方视差大，离物体近</p>
-<p><img src="\img\stereo3.jpg" style="zoom:15%;" /></p>
+<p><img src="\img\OpenCV\stereo3.jpg" style="zoom:15%;" /></p>
 </li>
 </ol>
 

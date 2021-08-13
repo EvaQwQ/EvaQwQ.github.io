@@ -9,7 +9,7 @@
     
     <title>
         
-            pronounciation |
+            OpenCV (几何变换) |
         
         EVA&#39;S WONDERLAND
     </title>
@@ -162,7 +162,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">pronounciation</span>
+            <span class="title-hover-animation">OpenCV (几何变换)</span>
         </div>
 
         
@@ -178,7 +178,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i> 2021-08-03 08:51:23
+        <i class="fas fa-edit"></i> 2021-08-13 16:10:44
     </span>
     
         <span class="article-categories article-meta-item">
@@ -198,7 +198,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/English-speech/">English speech</a>
+                        <a href="/tags/OpenCV/">OpenCV</a>
                     </li>
                 
             </ul>
@@ -217,57 +217,96 @@
         
 
         <div class="article-content markdown-body">
-            <p>I saw the most beautiful thing ever one morning.</p>
-<p>It was early with a slight frost on the ground,</p>
-<p>and I was walking on dewy grass down to the horse paddocks</p>
-<p>- my mind on the days chores.</p>
-<p>Suddenly a blazing laser flash erupted straight from the ground about 15 feet in front of me,</p>
-<p>and shot up into the sky.</p>
-<p>It was so brilliant, clear and clean, it literally topped me in my tracks.</p>
-<p>I thought the only thing that could make such a dazzling flash must be a diamond</p>
-<p>- maybe someone had lost some kind of jewelry.</p>
-<p>Or some kind of weird reverse lightning strike</p>
-<p>- so bright.</p>
-<p>I waited to see if it repeated but it didn’t.</p>
-<p>I walked slowly towards it.</p>
-<p>There was nothing to see.</p>
-<p>I stared down at the grass,</p>
-<p>searching for a glint of gold or some kind of metal.</p>
-<p>Nothing.</p>
-<p>So I dropped down really close and there it was!</p>
-<p>A tiny - no bigger than a dime - trapdoor spider’s web,</p>
-<p>delicately hanging between blades of grass,</p>
-<p>glistening with miniature drops of dew,</p>
-<p>flashing and twinkling in a myriad of colors.</p>
-<p>The rising sun had caught the exact angle of the dewdrops,</p>
-<p>and that laser light had exploded up into the sky.</p>
-<p>It was incredible and stunning,</p>
-<p>such a powerful flash from something so small and fragile,</p>
-<p>and I would have crushed it beneath my feet.</p>
-<p>It was as though the unseen world was giving me a heads-up.</p>
-<p>Hello! Look what’s around you.</p>
-<p>I’ve never forgotten that moment.</p>
-<p>So I say to everyone-</p>
-<p>take some time to notice the miracle of nature that most of us never even see.</p>
-<p>So much beauty all around us if we would only take the time.</p>
-<p>Look at the brilliant colors and intricate patterns of tiny flowers that cover playing fields</p>
-<p>- we walk all over them without a second glance.</p>
-<p>Watch a bee harvesting pollen .</p>
-<p>So busy with a purpose.</p>
-<p>Tiny ants going about their day.</p>
-<p>Birds singing and fluffing their wings, being bossy.</p>
-<p>Busy iridescent beetles and glossy lizards.</p>
-<p>The subtle shading and colors of practically any flower on earth are breathtaking and all natural</p>
-<p>- if we would only notice.</p>
-<p>It doesn’t have to be a garden.</p>
-<p>It can even be a weed flowering in the pavement crack.</p>
-<p>So I say -</p>
-<p>take the time</p>
-<p>and each day discover from nature one secret beautiful thing that you can keep in your heart.</p>
-<p>And get your children to do the same.</p>
-<p>Take a picture.</p>
-<p>it’s what life really consists of.</p>
-<p>And it’s free.</p>
+            <p>一张图，一下午，一群人，还是不完全懂！</p>
+<a id="more"></a>
+<h4 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h4><p>由于无穷远直线的介入，我们通常的 $\mathbb{R}^2$ 上的坐标 $(x, y)$ 已经不足以表示射影平面的所有点了，因此我们要对坐标进行改进。</p>
+<p>我们就把这个新改进的坐标 $(x, y, z)$ 叫做 <strong>齐次坐标</strong>。</p>
+<p>之所以叫做齐次坐标，因为它还有一个很重要的原因就是 $(\lambda_x, \lambda_y, \lambda_z )$​ 和 $(x, y, z)$​ 表示的是同一个点（因为两个坐标确定的直线相同）。换句话说，对于通常点（非无穷远点）而言，我也可以用非齐次坐标 $(\frac{x}{z}, \frac{y}{z})$​ 与之对应。</p>
+<h4 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h4><h5 id="平移变换"><a href="#平移变换" class="headerlink" title="平移变换"></a>平移变换</h5><script type="math/tex; mode=display">
+\begin{cases}
+x ^ {'} = x\ +\ T_x\\
+y ^ {'} = y\ +\ T_y\\
+\end{cases}
+\ 
+\Rightarrow
+\ 
+\begin{bmatrix}
+x^{'} & y^{'} & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+x & y & 1
+\end{bmatrix}
+
+\begin{bmatrix}
+1 & 0 & 1
+\\
+0 & 1 & 0
+\\
+T_x & T_y & 1  
+\end{bmatrix}</script><h5 id="比例放缩"><a href="#比例放缩" class="headerlink" title="比例放缩"></a>比例放缩</h5><script type="math/tex; mode=display">
+\begin{cases}
+x ^ {'} = x S_x
+\\
+y ^ {'} = y S_y
+\\
+\end{cases}
+\ 
+\Rightarrow
+\ 
+\begin{bmatrix}
+x^{'} & y^{'} & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+x & y & 1
+\end{bmatrix}
+
+\begin{bmatrix}
+S_x & 0 & 1
+\\
+0 & S_y & 0
+\\
+0 & 0 & 1  
+\end{bmatrix}</script><h5 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h5><p><img src="\img\OpenCV\rotation.png" style="zoom:30%;" /></p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+x^{'} & y^{'} & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+x & y & 1
+\end{bmatrix}
+
+\begin{bmatrix}
+cos{\theta} & sin{\theta} & 0
+\\
+-sin{\theta} & cos{\theta} & 0
+\\
+0 & 0 & 1  
+\end{bmatrix}</script><h5 id="剪切变换"><a href="#剪切变换" class="headerlink" title="剪切变换"></a>剪切变换</h5><script type="math/tex; mode=display">
+\begin{bmatrix}
+x^{'} & y^{'} & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+x & y & 1
+\end{bmatrix}
+
+\begin{bmatrix}
+1 & b & 0
+\\
+d & 1 & 0
+\\
+0 & 0 & 1  
+\end{bmatrix}</script><h4 id="投影变换"><a href="#投影变换" class="headerlink" title="投影变换"></a>投影变换</h4><p>放射变换：保长度与角度</p>
+<p>投影变换：无上述性质</p>
+<p><br></p>
+<p>接着，让我们来进入正题吧！</p>
+<h4 id="二维图像的几何运算矩阵"><a href="#二维图像的几何运算矩阵" class="headerlink" title="二维图像的几何运算矩阵"></a>二维图像的几何运算矩阵</h4><p><img src="\img\OpenCV\matrix1.jpg" style="zoom:30%;" /></p>
+<p>$T_1 T_4$ 都比较好理解</p>
+<p> $T_2$​ 这个部分，是 $(x，y) \times z(m，l)$​，相当于沿 $(m，l)$ 方向平移</p>
+<p>因为没有学过 <strong>射影几何</strong> 对于 $T_3$ 还不知道应该如何理解比较好</p>
 
         </div>
 
@@ -275,11 +314,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：pronounciation</li>
+        <li>Post title：OpenCV (几何变换)</li>
         <li>Post author：Eva.Q</li>
-        <li>Create time：2021-08-03 08:51:23</li>
+        <li>Create time：2021-08-13 16:10:44</li>
         <li>
-            Post link：https://qyy/2021/08/03/pronounciation/
+            Post link：https://qyy/2021/08/13/OPENCV2-1/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -293,29 +332,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/08/03/Imitation/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">A scene to remember</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/08/02/OPENCV1-5/"
+                           href="/2021/08/13/OPENCV2-0/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">OpenCV (用标定相机实现三维重建)</span>
+                                <span class="post-nav-title-item">OpenCV (一些关于相机的知识)</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -498,7 +522,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">齐次坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">仿射变换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%B3%E7%A7%BB%E5%8F%98%E6%8D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">平移变换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AF%94%E4%BE%8B%E6%94%BE%E7%BC%A9"><span class="nav-number">2.2.</span> <span class="nav-text">比例放缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC"><span class="nav-number">2.3.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%AA%E5%88%87%E5%8F%98%E6%8D%A2"><span class="nav-number">2.4.</span> <span class="nav-text">剪切变换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E5%8F%98%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">投影变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%83%8F%E7%9A%84%E5%87%A0%E4%BD%95%E8%BF%90%E7%AE%97%E7%9F%A9%E9%98%B5"><span class="nav-number">4.</span> <span class="nav-text">二维图像的几何运算矩阵</span></a></li></ol>
     </div>
 </div>
         </aside>
