@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Eva.Q">
+    
+    <title>
+        
+            二分 |
+        
+        EVA&#39;S WONDERLAND
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"It is the time you have wasted for your rose that makes your rose so important."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                EVA&#39;S WONDERLAND
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">二分</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Eva.Q</span>
+                        <span class="level">Lv4</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-08-18 09:27:41
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/HDU-s-Learning/">HDU&#39;s Learning</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Algorithm/">Algorithm</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>问你啥，你就二分啥 ~</p>
+<a id="more"></a>
+<h4 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h4><p>二分查找的前提是一个顺序表，即一张有序（升序或降序）的表。</p>
+<h5 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h5><p>在一组升序的数组中 $a_1, a_2, a_3, \cdots , a_n$  ，查找值为 $x$ 的数组下标，若找不到，则输出“<strong>Can’t find</strong>”。</p>
+<h5 id="解1"><a href="#解1" class="headerlink" title="解1"></a>解1</h5><p>这题十分常规，核心代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">l = <span class="number">1</span>, r = n;</span><br><span class="line"><span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">    mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid] == x) &#123;<span class="built_in">cout</span> &lt;&lt; mid &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(a[mid] &lt; x) l = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Can&#x27;t find&quot;</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h5><p>在一组升序的数组中 $a_1, a_2, a_3, \cdots , a_n$  ，查找值为 $x$ 的数组下标，若找不到，则输出比 $x$ 小的最大值的下标。</p>
+<h5 id="解2"><a href="#解2" class="headerlink" title="解2"></a>解2</h5><p>这道题和例1的区别就是，当找不到时，需要返回比 $x$ 小的最大值的下标，核心代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">l = <span class="number">1</span>, r = n;</span><br><span class="line"><span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">    mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid] &lt;= x) l = mid;</span><br><span class="line">    <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; l &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>mid = (l + r + 1) / 2</code> 是因为，如果 <code>mid = (l + r) / 2</code> ，当 <code>l = 1, r = 2</code> 且 <code>a[1] &lt;= x</code> 时，将会陷入死循环。所以在书写代码时，我们可以适当检验，来决定 <code>mid</code> 的取值。</p>
+</blockquote>
+<h4 id="二分答案"><a href="#二分答案" class="headerlink" title="二分答案"></a>二分答案</h4><blockquote>
+<p>典型的使用场景:  要求我们求出某种条件的最大值的最小可能情况或者最小值的最大情况 </p>
+<p>使用前提:  </p>
+<ol>
+<li>答案在一个固定的区间内 </li>
+<li>难以通过搜索来找到符合要求的值, 但给定一个值你可以很快的判断它是不是符合要求 </li>
+<li>可行解对于区间要符合单调性, 因为有序才能二分嘛</li>
+</ol>
+</blockquote>
+<p>要想利用二分答案我们需要找到单调性，如图所示</p>
+<p><img src="\img\ColinClass\BinarySearchAnswer.jpg" style="zoom:30%;" /></p>
+<h5 id="例1-1"><a href="#例1-1" class="headerlink" title="例1"></a>例1</h5><p><a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2678" >https://www.luogu.com.cn/problem/P2678<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="解1-1"><a href="#解1-1" class="headerlink" title="解1-1"></a>解1-1</h5><p>最怕写什么 <code>dfs\bfs</code> 结果Co老师让我先不管复杂度，<code>dfs</code> 一下，我真是太难了。枚举拿走的 $&lt;=m$ 块石头。$a_1, a_2, a_3, \cdots , a_n$，代表石头，伪代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; S; <span class="comment">// 存放拿走的石头</span></span><br><span class="line">dfs(<span class="keyword">int</span> x, <span class="keyword">int</span> y)&#123; <span class="comment">//x为a的下标，y为当前向量中的元素个数</span></span><br><span class="line">    <span class="keyword">if</span>(x == n + <span class="number">1</span> || y == m) &#123;give(S); <span class="keyword">return</span>;&#125;</span><br><span class="line">    S.push_bach(a[x]); <span class="comment">//a[x]放进去</span></span><br><span class="line">    dfs(x + <span class="number">1</span>, y + <span class="number">1</span>); </span><br><span class="line">    S.pop_back();</span><br><span class="line">    dfs(x + <span class="number">1</span>, y); <span class="comment">//a[x] 不放进去</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="解1-2"><a href="#解1-2" class="headerlink" title="解1-2"></a>解1-2</h5><p>对于这道题来说，我们令横坐标 $x$ 的含义为，拿走石头以后，每一步的距离都大于等于 $x$ ，即最短路径大于等于 $x$，而判断是否成立的条件就是，拿走石头的数量是否小于等于 $m$ 。</p>
+<p>在 $x$ 很小的时候一定成立，在 $x$ 很大的时候一定不成立。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 50008</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="keyword">int</span> m, n, l;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">valid</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> nowl = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i] - nowl &lt; x) ++cnt;</span><br><span class="line">		<span class="keyword">else</span> nowl = a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> cnt &lt;= m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; l &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> le = <span class="number">0</span>, re = l;</span><br><span class="line">	<span class="keyword">while</span>(le &lt; re)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (le + re + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(valid(mid)) le = mid;</span><br><span class="line">		<span class="keyword">else</span> re = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; le &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="例2-1"><a href="#例2-1" class="headerlink" title="例2"></a>例2</h5><p><a class="link"   target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/141/" >https://www.acwing.com/problem/content/141/<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="解2-1"><a href="#解2-1" class="headerlink" title="解2"></a>解2</h5><p>根据上一篇博客的内容，我们知道，要判断两个串是否相等，可以采用哈希的方式。因为要判断的是回文串，所以我们需要计算正反两种哈希值。</p>
+<p>在这里我们可以发现，对于一个固定的中间位置（可能是一个字符，可能是空），长度大的时候成立，则长度小的时候一定成立，长度很小的时候（为0）一定成立，所以长度就是我们要找的单调性，即要二分的 $x$ 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> base 31</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 100000007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> h[N], h1[N], B[N], Max, cnt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">hhr</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (h[r] - <span class="number">1ll</span> * h[l - <span class="number">1</span>] * B[r - l + <span class="number">1</span>] % mod + mod) % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">hhl</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (h1[l] - <span class="number">1ll</span> * h1[r + <span class="number">1</span>] * B[r - l + <span class="number">1</span>] % mod + mod) % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">valid</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> hhl(pos - len, pos - <span class="number">1</span>) == hhr(pos + <span class="number">1</span>, pos + len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">valid1</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> hhl(pos - len + <span class="number">1</span>, pos) == hhr(pos + <span class="number">1</span>, pos + len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">cB</span><span class="params">()</span></span>&#123;</span><br><span class="line">	B[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i)</span><br><span class="line">        B[i] = <span class="number">1ll</span> * B[i - <span class="number">1</span>] * base % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cB();</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, s + <span class="number">1</span>))&#123;</span><br><span class="line">		Max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>] == <span class="string">&#x27;E&#x27;</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">int</span> len = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">			</span><br><span class="line">    		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)</span><br><span class="line">        		h[i] = (<span class="number">1ll</span> * h[i - <span class="number">1</span>] * base + s[i] - <span class="string">&#x27;a&#x27;</span>) % mod;</span><br><span class="line">        		</span><br><span class="line">        	h1[len + <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    		<span class="keyword">for</span> (<span class="keyword">int</span> i = len; i; --i)</span><br><span class="line">        		h1[i] = (<span class="number">1ll</span> * h1[i + <span class="number">1</span>] * base + s[i] - <span class="string">&#x27;a&#x27;</span>) % mod;</span><br><span class="line">        		</span><br><span class="line">        	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)&#123;</span><br><span class="line">        		</span><br><span class="line">        		<span class="keyword">int</span> ll = <span class="number">0</span>; <span class="keyword">int</span> rr = min(i - <span class="number">1</span>, len - i);</span><br><span class="line">        		<span class="keyword">while</span>(ll &lt; rr)&#123;</span><br><span class="line">        			<span class="keyword">int</span> mid = (ll + rr + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        			<span class="keyword">if</span>(valid(i, mid)) ll = mid;</span><br><span class="line">        			<span class="keyword">else</span> rr = mid - <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				Max = max(Max, <span class="number">2</span> * ll + <span class="number">1</span>);</span><br><span class="line">				ll = <span class="number">0</span>; rr = min(i, len - i);</span><br><span class="line">        		<span class="keyword">while</span>(ll &lt; rr)&#123;</span><br><span class="line">        			<span class="keyword">int</span> mid = (ll + rr + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        			<span class="keyword">if</span>(valid1(i, mid)) ll = mid;</span><br><span class="line">        			<span class="keyword">else</span> rr = mid - <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				Max = max(Max, <span class="number">2</span> * ll);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Case %d: %d\n&quot;</span>, ++cnt, Max);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：二分</li>
+        <li>Post author：Eva.Q</li>
+        <li>Create time：2021-08-18 09:27:41</li>
+        <li>
+            Post link：https://qyy/2021/08/18/ColinClass2/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/08/17/ColinClass1/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">求和、差分、哈希</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '9zmOV2kEQ9zus2ce5RmpB8Vk-gzGzoHsz',
+                    appKey: 'MFrrae4FNMoBr993P56NRg0j',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'Speak something ~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+
+                        let author = 'Eva.Q';
+                        author && (author = author.toLocaleLowerCase());
+
+                        for (let vcard of vcards) {
+                            const vnick = vcard.querySelector('.vhead .vnick');
+                            if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                                vnick.innerHTML = `${author} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2021 <i class="fas fa-heart icon-animate"></i> <a href="/">Eva.Q</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">1.</span> <span class="nav-text">二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B1"><span class="nav-number">1.1.</span> <span class="nav-text">例1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A31"><span class="nav-number">1.2.</span> <span class="nav-text">解1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B2"><span class="nav-number">1.3.</span> <span class="nav-text">例2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A32"><span class="nav-number">1.4.</span> <span class="nav-text">解2</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">二分答案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B1-1"><span class="nav-number">2.1.</span> <span class="nav-text">例1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A31-1"><span class="nav-number">2.2.</span> <span class="nav-text">解1-1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A31-2"><span class="nav-number">2.3.</span> <span class="nav-text">解1-2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B2-1"><span class="nav-number">2.4.</span> <span class="nav-text">例2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A32-1"><span class="nav-number">2.5.</span> <span class="nav-text">解2</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
