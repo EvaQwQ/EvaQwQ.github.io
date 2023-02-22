@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Eva.Q">
+    
+    <title>
+        
+            OpenCV (相机姿态还原) |
+        
+        EVA&#39;S WONDERLAND
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"It is the time you have wasted for your rose that makes your rose so important."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                EVA&#39;S WONDERLAND
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">OpenCV (相机姿态还原)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Eva.Q</span>
+                        <span class="level">Lv8</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-08-02 10:48:21
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/HDU-s-Learning/">HDU&#39;s Learning</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OpenCV/">OpenCV</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>在已知物体三维结构的情况下，如何计算出相机的姿态。</p>
+<a id="more"></a>
+<h4 id="三维姿态"><a href="#三维姿态" class="headerlink" title="三维姿态"></a>三维姿态</h4><h5 id="solvePnP"><a href="#solvePnP" class="headerlink" title="solvePnP"></a>solvePnP</h5><p>官方解释：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#solvepnp" >http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#solvepnp<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">solvePnP</span><span class="params">(InputArray objectPoints, InputArray imagePoints, InputArray cameraMatrix, InputArray distCoeffs, OutputArray rvec, OutputArray tvec,<span class="keyword">bool</span> useExtrinsicGuess=<span class="literal">false</span>, <span class="keyword">int</span> flags=ITERATIVE )</span></span></span><br></pre></td></tr></table></figure>
+<p>注意，OpenCV 中还提供了 <code>SolvePnPRansac</code> 函数。它使用 <code>RANSAC</code> 算法求解 <code>PnP</code> 问题。这个函数能识别出错误的物体点/图像点对，并将其标记为异常数据。</p>
+<p><strong>RANSAC（随机抽样一致性）</strong></p>
+<p>用于匹配图像的算法</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45532306" >https://zhuanlan.zhihu.com/p/45532306<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42990464/article/details/119254747" >https://blog.csdn.net/weixin_42990464/article/details/119254747<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="cvPOSIT"><a href="#cvPOSIT" class="headerlink" title="cvPOSIT"></a>cvPOSIT</h5><p>官方解释：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.opencv.org.cn/index.php/Cv%E7%85%A7%E7%9B%B8%E6%9C%BA%E5%AE%9A%E6%A0%87%E5%92%8C%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA#POSIT" >http://www.opencv.org.cn/index.php/Cv%E7%85%A7%E7%9B%B8%E6%9C%BA%E5%AE%9A%E6%A0%87%E5%92%8C%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA#POSIT<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvPOSIT</span><span class="params">( CvPOSITObject* posit_object, CvPoint2D32f* image_points, <span class="keyword">double</span> focal_length, CvTermCriteria criteria, CvMatr32f rotation_matrix,  CvVect32f translation_vector )</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="两种函数的同与异"><a href="#两种函数的同与异" class="headerlink" title="两种函数的同与异"></a>两种函数的同与异</h5><p>同：</p>
+<ol>
+<li>输入都是 <code>3D</code> 点集和对应的 <code>2D</code> 点集，其中 <code>cvPOSIT</code> 的 <code>3D</code> 点包含在 <code>posit_object</code> 结构中</li>
+<li>输出包括旋转矩阵和位移向量</li>
+</ol>
+<p>异：</p>
+<ol>
+<li><code>solvePnP</code> 调用的是 <code>cvFindExtrinsicCameraParams2</code> 通过已知的内参进行未知外参求解，是一个精确解；而 <code>cvPOSIT</code> 是用仿射投影模型近似透视投影模型下，不断迭代计算出来的估计值(在物体深度变化相对于物体到摄像机的距离比较大的时候,这种算法可能不收敛)</li>
+<li><code>solvePnP</code> 输出的 <code>rvec</code> 是旋转向量，可以通过 <code>Rodrigues</code> 转换成旋转矩阵，有需要可以再转到欧拉角</li>
+</ol>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>公园里的长椅</p>
+<h5 id="用标定的相机进行拍照-并-标注8个点"><a href="#用标定的相机进行拍照-并-标注8个点" class="headerlink" title="用标定的相机进行拍照 并 标注8个点"></a>用标定的相机进行拍照 并 标注8个点</h5><p><img src="\img\OpenCV\bench.jpg" style="zoom:15%;" /></p>
+<h5 id="测量长椅的物理尺寸"><a href="#测量长椅的物理尺寸" class="headerlink" title="测量长椅的物理尺寸"></a>测量长椅的物理尺寸</h5><blockquote>
+<p>椅座：242.5cm<em>53.5cm\</em>9cm</p>
+<p>靠背：242.5cm<em>24cm\</em>9cm</p>
+<p>两者相距 12cm</p>
+</blockquote>
+<h5 id="推导八个点的三维坐标"><a href="#推导八个点的三维坐标" class="headerlink" title="推导八个点的三维坐标"></a>推导八个点的三维坐标</h5><p>设椅座与靠背的交叉线的左侧顶点作为坐标系原点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;Point3f&gt; objectPoints;</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">0</span>, <span class="number">45</span>, <span class="number">0</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">242.5</span>, <span class="number">45</span>, <span class="number">0</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">242.5</span>, <span class="number">21</span>, <span class="number">0</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">0</span>, <span class="number">32</span>, <span class="number">0</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">0</span>, <span class="number">9</span>, <span class="number">-9</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">242.5</span>, <span class="number">9</span>, <span class="number">-9</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">242.5</span>, <span class="number">9</span>, <span class="number">44.5</span>));</span><br><span class="line">objectPoints.push_back(Point3f(<span class="number">0</span>, <span class="number">9</span>, <span class="number">44.5</span>));</span><br></pre></td></tr></table></figure>
+<h5 id="在二维成像平面中，写出这些点的坐标"><a href="#在二维成像平面中，写出这些点的坐标" class="headerlink" title="在二维成像平面中，写出这些点的坐标"></a>在二维成像平面中，写出这些点的坐标</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;Point2f&gt; imagePoints;</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">136</span>,<span class="number">113</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">379</span>,<span class="number">114</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">379</span>,<span class="number">150</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">138</span>,<span class="number">135</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">143</span>,<span class="number">146</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">381</span>,<span class="number">166</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">345</span>,<span class="number">194</span>));</span><br><span class="line">objectPoints.push_back(Point2f(<span class="number">103</span>,<span class="number">161</span>));</span><br></pre></td></tr></table></figure>
+<h5 id="调用-solvePnP-函数，计算拍照时相机与这些点之间的相对位置"><a href="#调用-solvePnP-函数，计算拍照时相机与这些点之间的相对位置" class="headerlink" title="调用 solvePnP 函数，计算拍照时相机与这些点之间的相对位置"></a>调用 <code>solvePnP</code> 函数，计算拍照时相机与这些点之间的相对位置</h5><p>此函数实际上是通过旋转和平移，把物体坐标转换到以相机为中心的坐标系上（焦点为坐标原点）</p>
+<p>注意，该函数得到的旋转量是一个三维容器。表示物体绕着一个单位向量（旋转轴）转了某个角度。（轴 + 角度，<strong>罗德里格旋转公式</strong> ）。在 OpenCV 中，旋转角度对应着输出的旋转向量的值，该向量与旋转轴一致，所以，投影公式中使用 <code>Rodrigues</code> 函数来获取旋转三维矩阵。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Mat rvec, tvec;</span><br><span class="line">solvePnP(objectPoints, imagePoints, <span class="comment">// 对应的三维点和二维点</span></span><br><span class="line">         cameraMatrix, cameraDistCoeffs, <span class="comment">// 标定（相机内参 和 相机畸变）</span></span><br><span class="line">         rvec, tvec); <span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// 转换成三维旋转矩阵</span></span><br><span class="line">Mat rotation;</span><br><span class="line">Rodrigues(rvec, rotation);</span><br></pre></td></tr></table></figure>
+<h5 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h5><p>使用 <code>cv::viz</code> 模块可以显示三维信 息</p>
+<p><code>cv::viz:: ...</code></p>
+<p>使用样例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">cv::<span class="function">viz::Viz3d <span class="title">visualizer</span><span class="params">(<span class="string">&quot;Viz window&quot;</span>)</span></span>; <span class="comment">// 创建窗口</span></span><br><span class="line">visualizer.setBackgroundColor(cv::viz::Color::white()); <span class="comment">// 白色背景</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个虚拟相机</span></span><br><span class="line">cv::<span class="function">viz::WCameraPosition <span class="title">cam</span><span class="params">(cMatrix, <span class="comment">// 内部参数矩阵 类型为Matx33d（Matx&lt;double, 3, 3&gt;</span></span></span></span><br><span class="line"><span class="function"><span class="params">                            image, <span class="comment">// 平面上显示的图像</span></span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="number">30.0</span>, <span class="comment">// 缩放因子</span></span></span></span><br><span class="line"><span class="function"><span class="params">                            cv::viz::Color::black())</span></span>;</span><br><span class="line"><span class="comment">// 在环境中添加虚拟相机</span></span><br><span class="line">visualizer.showWidget(<span class="string">&quot;Camera&quot;</span>, cam);</span><br><span class="line"><span class="comment">// 用长方形表示虚拟的长椅</span></span><br><span class="line">cv::<span class="function">viz::Wcube <span class="title">plane1</span><span class="params">(Point3f(<span class="number">0.0</span>, <span class="number">45.0</span>, <span class="number">0.0</span>),</span></span></span><br><span class="line"><span class="function"><span class="params">                     Point3f(<span class="number">242.5</span>, <span class="number">21.0</span>, <span class="number">-9.0</span>),</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="literal">true</span>, <span class="comment">// 显示线条框架</span></span></span></span><br><span class="line"><span class="function"><span class="params">                     cv::viz::Color::blue())</span></span>;</span><br><span class="line">cv::<span class="function">viz::Wcube <span class="title">plane2</span><span class="params">(Point3f(<span class="number">0.0</span>, <span class="number">9.0</span>, <span class="number">-9.0</span>),</span></span></span><br><span class="line"><span class="function"><span class="params">                     Point3f(<span class="number">242.5</span>, <span class="number">0.0</span>, <span class="number">44.5</span>),</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="literal">true</span>, <span class="comment">// 显示线条框架</span></span></span></span><br><span class="line"><span class="function"><span class="params">                     cv::viz::Color::blue())</span></span>;</span><br><span class="line"><span class="comment">// 把虚拟物体加入到环境中</span></span><br><span class="line">visualizer.showWidget(<span class="string">&quot;top&quot;</span>, plane1);</span><br><span class="line">visualizer.showWidget(<span class="string">&quot;bottom&quot;</span>, plane2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 虚拟长椅也放在坐标原点，然后用cv::solvePnP函数计算出以相机为中心的位置，并把长椅移动到该位置。这个过程在setWidgetPose方法中完成。这里只是根据估算值进行了旋转和平移</span></span><br><span class="line"></span><br><span class="line">Mat rotation;</span><br><span class="line"><span class="comment">// 将rotation转换成3*3的旋转矩阵</span></span><br><span class="line">Rodrigues(rvec, rotation);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移动长椅</span></span><br><span class="line"><span class="function">Affine3d <span class="title">pose</span><span class="params">(rotation, tvec)</span></span>;</span><br><span class="line">visualizer.setWidgetPose(<span class="string">&quot;top&quot;</span>, pose);</span><br><span class="line">visualizer.setWidgetPose(<span class="string">&quot;bottom&quot;</span>, pose);</span><br><span class="line"><span class="comment">// 循环显示</span></span><br><span class="line"><span class="keyword">while</span>(waitKey(<span class="number">100</span>) == <span class="number">-1</span> &amp;&amp; !visualizer.wasStopped())&#123;</span><br><span class="line">    </span><br><span class="line">    visualizer.spinOnce(<span class="number">1</span>, <span class="comment">// 暂停1s</span></span><br><span class="line">                       <span class="literal">true</span>); <span class="comment">// 重绘</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 关闭可视化窗口 或 在OpenCV图像窗口上输入任意键就可以结束循环。在循环内部移动物体（用setWidgetPose），即可产生动画。</span></span><br></pre></td></tr></table></figure>
+<h4 id="相机姿态更新"><a href="#相机姿态更新" class="headerlink" title="相机姿态更新"></a>相机姿态更新</h4><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/aptx704610875/article/details/48915149" >https://blog.csdn.net/aptx704610875/article/details/48915149<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：OpenCV (相机姿态还原)</li>
+        <li>Post author：Eva.Q</li>
+        <li>Create time：2021-08-02 10:48:21</li>
+        <li>
+            Post link：https://qyy/2021/08/02/OPENCV1-4/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/08/02/Life-shines-on-life/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Life shines on life</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/07/31/OPENCV1-3/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenCV (相机标定)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '9zmOV2kEQ9zus2ce5RmpB8Vk-gzGzoHsz',
+                    appKey: 'MFrrae4FNMoBr993P56NRg0j',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'Speak something ~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+
+                        let author = 'Eva.Q';
+                        author && (author = author.toLocaleLowerCase());
+
+                        for (let vcard of vcards) {
+                            const vnick = vcard.querySelector('.vhead .vnick');
+                            if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                                vnick.innerHTML = `${author} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2023 <i class="fas fa-heart icon-animate"></i> <a href="/">Eva.Q</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E5%A7%BF%E6%80%81"><span class="nav-number">1.</span> <span class="nav-text">三维姿态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#solvePnP"><span class="nav-number">1.1.</span> <span class="nav-text">solvePnP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cvPOSIT"><span class="nav-number">1.2.</span> <span class="nav-text">cvPOSIT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%87%BD%E6%95%B0%E7%9A%84%E5%90%8C%E4%B8%8E%E5%BC%82"><span class="nav-number">1.3.</span> <span class="nav-text">两种函数的同与异</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%A0%87%E5%AE%9A%E7%9A%84%E7%9B%B8%E6%9C%BA%E8%BF%9B%E8%A1%8C%E6%8B%8D%E7%85%A7-%E5%B9%B6-%E6%A0%87%E6%B3%A88%E4%B8%AA%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">用标定的相机进行拍照 并 标注8个点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E9%87%8F%E9%95%BF%E6%A4%85%E7%9A%84%E7%89%A9%E7%90%86%E5%B0%BA%E5%AF%B8"><span class="nav-number">2.2.</span> <span class="nav-text">测量长椅的物理尺寸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E5%85%AB%E4%B8%AA%E7%82%B9%E7%9A%84%E4%B8%89%E7%BB%B4%E5%9D%90%E6%A0%87"><span class="nav-number">2.3.</span> <span class="nav-text">推导八个点的三维坐标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E4%BA%8C%E7%BB%B4%E6%88%90%E5%83%8F%E5%B9%B3%E9%9D%A2%E4%B8%AD%EF%BC%8C%E5%86%99%E5%87%BA%E8%BF%99%E4%BA%9B%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87"><span class="nav-number">2.4.</span> <span class="nav-text">在二维成像平面中，写出这些点的坐标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-solvePnP-%E5%87%BD%E6%95%B0%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%8B%8D%E7%85%A7%E6%97%B6%E7%9B%B8%E6%9C%BA%E4%B8%8E%E8%BF%99%E4%BA%9B%E7%82%B9%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.5.</span> <span class="nav-text">调用 solvePnP 函数，计算拍照时相机与这些点之间的相对位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C"><span class="nav-number">2.6.</span> <span class="nav-text">检验</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E5%A7%BF%E6%80%81%E6%9B%B4%E6%96%B0"><span class="nav-number">3.</span> <span class="nav-text">相机姿态更新</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

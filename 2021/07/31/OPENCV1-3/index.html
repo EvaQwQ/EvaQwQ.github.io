@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Eva.Q">
+    
+    <title>
+        
+            OpenCV (相机标定) |
+        
+        EVA&#39;S WONDERLAND
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"It is the time you have wasted for your rose that makes your rose so important."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                EVA&#39;S WONDERLAND
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">OpenCV (相机标定)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Eva.Q</span>
+                        <span class="level">Lv8</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-07-31 10:03:57
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/HDU-s-Learning/">HDU&#39;s Learning</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OpenCV/">OpenCV</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p><strong>“The moment you doubt whether you can fly, you cease for ever to be able to do it.” —— Peter Pan</strong></p>
+<a id="more"></a>
+<h3 id="Pr"><a href="#Pr" class="headerlink" title="Pr"></a>Pr</h3><h5 id="相机标定"><a href="#相机标定" class="headerlink" title="相机标定"></a>相机标定</h5><p>相机参数的估计过程称为相机标定。这意味着我们拥有关于相机的所有信息（参数或系数），这些信息用于确定真实世界中的) <strong>3D</strong> 点与其在该标定相机捕获的图像中的相应 <strong>2D</strong> 投影（像素）之间的精确关系。通常这意味着恢复两种参数。</p>
+<p>内部参数: 例如透镜的焦距、光学中心和径向畸变系数。<br>外部参数: 指相机相对于某些世界坐标系的方位(旋转和平移)。</p>
+<h5 id="二维点与三维点的转化"><a href="#二维点与三维点的转化" class="headerlink" title="二维点与三维点的转化"></a>二维点与三维点的转化</h5><script type="math/tex; mode=display">
+\pmb{s}
+\begin{vmatrix} 
+\pmb{x} \\ \pmb{y} \\ \pmb{1}
+\end{vmatrix}
+ = 
+\begin{vmatrix} 
+\pmb{f} & \pmb{0} & \pmb{0} & \pmb{0} \\ \pmb{0} & \pmb{f} & \pmb{0} & \pmb{0} \\ \pmb{0} & \pmb{0} & \pmb{1} & \pmb{0}
+\end{vmatrix}
+
+\begin{vmatrix} 
+\pmb{X} \\ \pmb{Y} \\ \pmb{Z} \\ \pmb{1}
+\end{vmatrix}</script><h5 id="四种坐标系"><a href="#四种坐标系" class="headerlink" title="四种坐标系"></a>四种坐标系</h5><p><img src="\img\OpenCV\CoordinateSystem.png" style="zoom:60%;" /></p>
+<p>1、图像像素坐标系：表示场景中三维点在图像平面上的投影，其坐标原点在CCD图像平面的左上角，u轴平行于CCD平面水平向右，v轴垂直于u轴向下，坐标使用（u,v）来表示。注：这里的（u,v）表示的是该像素在数组中的列数和行数</p>
+<p>2、图像物理坐标系：其坐标原点在CCD图像平面的中心，x,y轴分别平行于图像像素坐标系的坐标轴，坐标用(x,y)表示。</p>
+<p>3、相机坐标系：以相机的光心为坐标系原点，X,Y轴平行于图像坐标系的X,Y轴，相机的光轴为Z轴，坐标系满足右手法则。注：这里所指的相机的光心可以简单的理解为相机透镜的几何中心</p>
+<p>4、世界坐标系：也称为绝对坐标系，用于表示场景点的绝对坐标</p>
+<h5 id="世界参考系和相机参考系的转换"><a href="#世界参考系和相机参考系的转换" class="headerlink" title="世界参考系和相机参考系的转换"></a>世界参考系和相机参考系的转换</h5><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/jiangxing11/article/details/106478020" >https://blog.csdn.net/jiangxing11/article/details/106478020<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15029743/article/details/90215104" >https://blog.csdn.net/qq_15029743/article/details/90215104<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="投影方程"><a href="#投影方程" class="headerlink" title="投影方程"></a>投影方程</h5><script type="math/tex; mode=display">
+\pmb{s}
+\begin{vmatrix} 
+\pmb{x} \\ \pmb{y} \\ \pmb{1}
+\end{vmatrix}
+ = 
+\begin{vmatrix} 
+\pmb{f_x} & \pmb{0} & \pmb{u_0} \\ \pmb{0} & \pmb{f_y} & \pmb{v_0} \\ \pmb{0} & \pmb{0} & \pmb{1}
+\end{vmatrix}
+
+\begin{vmatrix} 
+\pmb{r_1} & \pmb{r_2} & \pmb{r_3} & \pmb{t_1} \\ \pmb{r_4} & \pmb{r_5} & \pmb{r_6} & \pmb{t_2} \\ \pmb{r_7} & \pmb{r_8} & \pmb{r_9} & \pmb{t_3}
+\end{vmatrix}
+
+\begin{vmatrix} 
+\pmb{X} \\ \pmb{Y} \\ \pmb{Z} \\ \pmb{1}
+\end{vmatrix}</script><h3 id="基于OpenCV的相机标定"><a href="#基于OpenCV的相机标定" class="headerlink" title="基于OpenCV的相机标定"></a>基于OpenCV的相机标定</h3><h5 id="目标"><a href="#目标" class="headerlink" title="目标"></a><strong>目标</strong></h5><p>标定过程的目标是使用一组已知的三维点 $(X_w, Y_w, A_w)$ 及其对应的图像坐标 $(u, v)$</p>
+<p>找到 <strong>3×3矩阵 <strong>K</strong> , 3×3旋转矩阵 <strong>R</strong> , 3×1平移向量 <strong>T</strong> </strong>。当我们得到相机的内部和外部参数值时，相机就被称为标定相机。</p>
+<p>总之，相机标定算法具有以下输入和输出：</p>
+<p>输入：具有已知二维图像坐标和三维世界坐标的点的图像集合。<br>输出：3×3相机内参矩阵，每幅图像的旋转和平移。<br>注意OpenCV中，相机内部矩阵不包含倾斜参数。所以矩阵的形式是：</p>
+<script type="math/tex; mode=display">
+\begin{vmatrix} 
+\pmb{f_x} & \pmb{0} & \pmb{c_x} \\ \pmb{0} & \pmb{f_y} & \pmb{c_y} \\ \pmb{0} & \pmb{0} & \pmb{1}
+\end{vmatrix}</script><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a><strong>方法</strong></h5><ul>
+<li>校正：当我们完全控制成像过程时，执行校准的最佳方法是从不同的视角捕获一个物体或已知尺寸模式的多个图像。我们将在这篇文章中学习的基于棋盘的方法属于这一类。我们也可以使用已知尺寸的圆形图案，而不是棋盘格图案。</li>
+<li>几何线索：有时我们在场景中有其他的几何线索，如直线和消失点，可以用来标定。</li>
+<li>基于深度学习的：当我们对成像设置的控制非常小（例如，我们有场景的单个图像）时，仍然可以使用基于深度学习的方法获取相机的校准信息。</li>
+</ul>
+<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a><strong>步骤</strong></h5><ol>
+<li>使用棋盘格模式定义真实世界坐标;</li>
+<li>从不同的角度捕获棋盘的多个图像;</li>
+<li>查找棋盘的2D坐标;</li>
+<li>校准相机</li>
+</ol>
+<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a><strong>实现</strong></h5><p>OpenCV 推荐使用国际象棋棋盘的图案生成用于标定的三维场景点的集合。</p>
+<p><img src="\img\OpenCV\chessBoard.png" style="zoom:55%;" /></p>
+<p>这个图案在每个方块的角点位置创建场景点；由于图案是平面的，可以假设棋盘位于 <strong>Z = 0,  X,Y 的坐标轴与网格对其的位置</strong> 。这样，标定时就只需从不同的视角拍摄棋盘图案。</p>
+<p><img src="\img\OpenCV\chessBoard2.png" style="zoom:115%;" /></p>
+<p><strong>检测角点</strong></p>
+<p>可以用OpenCV自带的函数自动检测棋盘图案中的角点。只需要提供一幅图像和棋盘尺寸（水平和垂直方向内部角点的数量），函数会返回图像中所有棋盘角点的位置，若无法找到图案，函数返回false。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出图像角点的向量</span></span><br><span class="line"><span class="built_in">vector</span>&lt;Point2f&gt; imageCorners;</span><br><span class="line"><span class="comment">//棋盘内部角点的数量</span></span><br><span class="line"><span class="function">Size <span class="title">boardSize</span><span class="params">(<span class="number">7</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="comment">//获得棋盘角点</span></span><br><span class="line"><span class="keyword">bool</span> foound = findChessboardCorners(image, boardSize, omageCorners);<span class="comment">//image 棋盘图案</span></span><br></pre></td></tr></table></figure>
+<p>棋盘内部角点数，如图</p>
+<p><img src="\img\OpenCV\corner.png" style="zoom:13%;" /></p>
+<p><strong>画角点</strong></p>
+<p>画出角点并用线条连接起来，连接次序即在想两种存储的次序。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawChessboardCorners(image, boardSize, imageCorners, found);</span><br></pre></td></tr></table></figure>
+<p><img src="\img\OpenCV\chessBoard3.png" style="zoom:55%;" /></p>
+<p><strong>指定三维点</strong></p>
+<p>自由选择单位，如厘米或英寸等。</p>
+<p>为了方便起见我们将方块的边长定位单位，这样可令点的坐标如 <code>（0，0，0）（6，4，0）</code> 这样便于表示。</p>
+<p>（假设棋盘纵深坐标为 <code>z = 0</code> ）</p>
+<p>为了得到更多的点，需要从不同的视角对同一个标定图案拍摄更多的照片。</p>
+<p>OpenCV的标定函数假定由标定图案确定坐标系，并计算相机相对于坐标系的旋转量和平移量。</p>
+<p>把标定过程封装在 <code>CameraCailbrator</code> 中，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CameraCailbrator</span>&#123;</span></span><br><span class="line">    <span class="comment">//每个向量的元素也是一个向量 表示一个视角的点集</span></span><br><span class="line">    <span class="comment">//输入点 世界坐标系（每个正方形为一个单位）</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point3f&gt; &gt; objectPoints;</span><br><span class="line">    <span class="comment">//点在图像中的位置（以像素为单位）</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point2f&gt; &gt; imagePoints;</span><br><span class="line">    <span class="comment">//输出矩阵</span></span><br><span class="line">    Mat cameraMatrix;</span><br><span class="line">    Mat distCoeffs;</span><br><span class="line">    <span class="comment">//指定标定方式的标志</span></span><br><span class="line">    <span class="keyword">int</span> fllag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>类库</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CAMERACALIBRATOR_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CAMERACALIBRATOR_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;opencv2/imgproc.hpp&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;opencv2/calib3d.hpp&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CameraCalibrator</span> &#123;</span></span><br><span class="line">    <span class="comment">// 输入点：  </span></span><br><span class="line">    <span class="comment">// 世界坐标系中的点 </span></span><br><span class="line">    <span class="comment">//（每个正方形为一个单位） </span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point3f&gt; &gt; objectPoints;</span><br><span class="line">    <span class="comment">// 点在图像中的位置（以像素为单位） </span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt; &gt; imagePoints;</span><br><span class="line">    <span class="comment">// 输出矩阵 </span></span><br><span class="line">    cv::Mat cameraMatrix;</span><br><span class="line">    cv::Mat distCoeffs;</span><br><span class="line">    <span class="comment">// 指定标定方式的标志</span></span><br><span class="line">    <span class="keyword">int</span> flag;</span><br><span class="line">    <span class="comment">// used in image undistortion </span></span><br><span class="line">    cv::Mat map1,map2; </span><br><span class="line">    <span class="keyword">bool</span> mustInitUndistort;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    CameraCalibrator() : flag(<span class="number">0</span>), mustInitUndistort(<span class="literal">true</span>) &#123;&#125;</span><br><span class="line">    <span class="comment">// Open the chessboard images and extract corner points</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addChessboardPoints</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; filelist, cv::Size &amp; boardSize, <span class="built_in">std</span>::<span class="built_in">string</span> windowName=<span class="string">&quot;&quot;</span>)</span></span>;</span><br><span class="line">    <span class="comment">// Add scene points and corresponding image points</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addPoints</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt;&amp; imageCorners, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point3f&gt;&amp; objectCorners)</span></span>;</span><br><span class="line">    <span class="comment">// Calibrate the camera</span></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">calibrate</span><span class="params">(<span class="keyword">const</span> cv::Size imageSize)</span></span>;</span><br><span class="line">    <span class="comment">// Set the calibration flag</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setCalibrationFlag</span><span class="params">(<span class="keyword">bool</span> radial8CoeffEnabled=<span class="literal">false</span>, <span class="keyword">bool</span> tangentialParamEnabled=<span class="literal">false</span>)</span></span>;</span><br><span class="line">    <span class="comment">// Remove distortion in an image (after calibration)</span></span><br><span class="line">    <span class="function">cv::Mat <span class="title">remap</span><span class="params">(<span class="keyword">const</span> cv::Mat &amp;image, cv::Size &amp;outputSize = cv::Size(<span class="number">-1</span>, <span class="number">-1</span>))</span></span>;</span><br><span class="line">    <span class="comment">// Getters</span></span><br><span class="line">    <span class="function">cv::Mat <span class="title">getCameraMatrix</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> cameraMatrix; &#125;</span><br><span class="line">    <span class="function">cv::Mat <span class="title">getDistCoeffs</span><span class="params">()</span>   </span>&#123; <span class="keyword">return</span> distCoeffs; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// CAMERACALIBRATOR_H</span></span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这里采用增加标定点的方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CameraCailbrator::addChessboardPoints</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp; filelist, Size &amp; boardSize)</span></span>&#123; <span class="comment">//文件名列表 标定面板大小</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//棋盘上的角点</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Point2f&gt; imageCorners;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Point3f&gt; objectCorners;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//场景中的三维点 在棋盘坐标系中，初始化期盼中的角点 角点的三维坐标(i, j, 0)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; boardSize.height; ++i)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; boardSize.width; ++j)&#123;</span><br><span class="line">            objectCorners.push_back(Point3f(i, j, <span class="number">0.0f</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//图像中的二维点</span></span><br><span class="line">    Mat image; <span class="comment">//存储棋盘图像</span></span><br><span class="line">    <span class="keyword">int</span> successes = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//处理所有视角</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; filelist.size(); ++i)&#123;</span><br><span class="line">        image = imread(filelist[i], <span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">bool</span> found = findChessboardCorners(image, boardSize, imageCorners);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//取得角点上的亚像素级精度</span></span><br><span class="line">        <span class="keyword">if</span>(found)&#123;</span><br><span class="line">            cornerSubPix(image, imageCorners, Size(<span class="number">5</span>, <span class="number">5</span>), Size(<span class="number">-1</span>, <span class="number">-1</span>), TermCriteria(TermCriteria::MAX_ITER + TermCriteria::EPS, <span class="number">30</span>, <span class="number">0.1</span>));</span><br><span class="line">            <span class="comment">//棋盘完好</span></span><br><span class="line">            <span class="keyword">if</span>(imageCorners.size() == boardSize.area())&#123;</span><br><span class="line">                <span class="comment">//加入同一视角得到的图像和场景点</span></span><br><span class="line">                addPoints(imageCorners, objectCorners);</span><br><span class="line">                successes++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> successes; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>处理完足够数量的棋盘图像（一般10~20个）后，就可以开始计算标定参数了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标定相机 返回重投影误差</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">CameraCalibrator::calibrate</span><span class="params">(Size &amp;imageSize)</span></span>&#123;</span><br><span class="line">    <span class="comment">//输出旋转量和平移量</span></span><br><span class="line">     <span class="built_in">vector</span>&lt;Mat&gt; rvecs, tvecs;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//开始标定</span></span><br><span class="line">    <span class="keyword">return</span> calibrateCamera(objectPoints, <span class="comment">// 三维点</span></span><br><span class="line">                           imagePoints,  <span class="comment">// 图像点</span></span><br><span class="line">                           imageSize,    <span class="comment">// 图像尺寸</span></span><br><span class="line">                           cameraMatrix, <span class="comment">// 输出相机矩阵</span></span><br><span class="line">                           distCoffes,   <span class="comment">// 输出畸变矩阵</span></span><br><span class="line">                           rvecs, tvecs, <span class="comment">// Rs，Ts</span></span><br><span class="line">                           flag);        <span class="comment">// 设置选项</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>重投影误差</strong></p>
+<p>函数 <code>calibrateCamera</code> 在得到标定结果之前进行了优化，以便找到合适的内部参数和外部参数，使图像点的预定位置（根据三维点的投影计算得到）和实际位置（图像中的位置）之间的距离达到最小。每个点在标定过程中都会产生这个距离，它们的累加和就是重投影误差。</p>
+<p><strong>畸变模型</strong></p>
+<p>径向畸变：超广角镜头产生的典型畸变</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 去除图像中的畸变（标定后）</span></span><br><span class="line"><span class="function">Mat <span class="title">CameraCalibrator::remap</span><span class="params">(<span class="keyword">const</span> Mat &amp;image)</span></span>&#123;</span><br><span class="line">    Mat undistorted;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(mustInitUndistort)&#123; <span class="comment">// 每个标定过程只调用一次</span></span><br><span class="line">        </span><br><span class="line">        initUndistortRectifyMap(cameraMatrix, <span class="comment">// 计算得到的相机矩阵</span></span><br><span class="line">                                distCoeffs,   <span class="comment">// 计算得到的畸变矩阵</span></span><br><span class="line">                                Mat(),        <span class="comment">// 可选矫正项（无）</span></span><br><span class="line">                                Mat(),        <span class="comment">// 生成无畸变的相机矩阵</span></span><br><span class="line">                                image.size(), <span class="comment">// 无畸变图像的尺寸</span></span><br><span class="line">                                CV_32FC1,     <span class="comment">// 输出图片的类型</span></span><br><span class="line">                                map1, map2);  <span class="comment">// x和y映射功能</span></span><br><span class="line">        </span><br><span class="line">        mustInitUndistort = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 应用映射功能</span></span><br><span class="line">    remap(image, undistorted, map1, map2, INTER_LINEAR); <span class="comment">// 插值类型</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> undistorted;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>回到本文最前面的投影方程。</p>
+<p>方程中连续使用了两个矩阵，把三维空间的点转换到二维空间。</p>
+<p>第一个矩阵，相机的内部参数，是一个3*3的矩阵。是函数 <code>calibrateCamera</code> 输出的矩阵之一。此外还有一个 <code>calibrationMatrixValues</code> 函数，它根据标定矩阵，显示地返回内部参数值。</p>
+<p>第二个矩阵，外部参数，内容是输入的点，以相机为坐标系中心。它由一个旋转向量（3*3）和一个平移向量（3*1）组成。旋转向量 $r_1, r_2, … r_9$ ，平移向量 $t_1, t_2, t_3$ 。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/LuohenYJ/article/details/104697062" >https://blog.csdn.net/LuohenYJ/article/details/104697062<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/jiangxing11/article/details/106478020" >https://blog.csdn.net/jiangxing11/article/details/106478020<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15029743/article/details/90215104" >https://blog.csdn.net/qq_15029743/article/details/90215104<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：OpenCV (相机标定)</li>
+        <li>Post author：Eva.Q</li>
+        <li>Create time：2021-07-31 10:03:57</li>
+        <li>
+            Post link：https://qyy/2021/07/31/OPENCV1-3/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/08/02/OPENCV1-4/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenCV (相机姿态还原)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/07/31/Speech-subwayMusician/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Speech_subwayMusician</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '9zmOV2kEQ9zus2ce5RmpB8Vk-gzGzoHsz',
+                    appKey: 'MFrrae4FNMoBr993P56NRg0j',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'Speak something ~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+
+                        let author = 'Eva.Q';
+                        author && (author = author.toLocaleLowerCase());
+
+                        for (let vcard of vcards) {
+                            const vnick = vcard.querySelector('.vhead .vnick');
+                            if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                                vnick.innerHTML = `${author} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2023 <i class="fas fa-heart icon-animate"></i> <a href="/">Eva.Q</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pr"><span class="nav-number">1.</span> <span class="nav-text">Pr</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">相机标定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E7%82%B9%E4%B8%8E%E4%B8%89%E7%BB%B4%E7%82%B9%E7%9A%84%E8%BD%AC%E5%8C%96"><span class="nav-number">1.0.2.</span> <span class="nav-text">二维点与三维点的转化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">1.0.3.</span> <span class="nav-text">四种坐标系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E5%8F%82%E8%80%83%E7%B3%BB%E5%92%8C%E7%9B%B8%E6%9C%BA%E5%8F%82%E8%80%83%E7%B3%BB%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.0.4.</span> <span class="nav-text">世界参考系和相机参考系的转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E6%96%B9%E7%A8%8B"><span class="nav-number">1.0.5.</span> <span class="nav-text">投影方程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">基于OpenCV的相机标定</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">2.0.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">2.0.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.0.3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.0.4.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.0.5.</span> <span class="nav-text">实现原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

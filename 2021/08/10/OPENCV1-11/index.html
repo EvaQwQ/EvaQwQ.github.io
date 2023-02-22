@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Eva.Q">
+    
+    <title>
+        
+            OpenCV (检测兴趣点) |
+        
+        EVA&#39;S WONDERLAND
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"It is the time you have wasted for your rose that makes your rose so important."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                EVA&#39;S WONDERLAND
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">OpenCV (检测兴趣点)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Eva.Q</span>
+                        <span class="level">Lv8</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-08-10 11:15:09
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/HDU-s-Learning/">HDU&#39;s Learning</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OpenCV/">OpenCV</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>兴趣点（关键点、特征点），目标识别、图像配准、视觉跟踪、三维重建领域热词之一</p>
+<a id="more"></a>
+<h3 id="检测图像中的角点"><a href="#检测图像中的角点" class="headerlink" title="检测图像中的角点"></a>检测图像中的角点</h3><p>角点：两条边缘线的接合点，是一种二维特征，可以被精确地检测（即使是亚像素级精度）</p>
+<p>Harris角点：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41598072/article/details/83651629" >https://blog.csdn.net/qq_41598072/article/details/83651629<i class="fas fa-external-link-alt"></i></a></p>
+<p>OpenCV 中检测 Harris 角点的基本函数是 <code>cornerHarris</code></p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检测Harris角点</span></span><br><span class="line">Mat cornerStrength;</span><br><span class="line">cornerHarris(image, <span class="comment">// 输入图像 </span></span><br><span class="line">			 cornerStrength, <span class="comment">// 角点强度的图像</span></span><br><span class="line">			 <span class="number">3</span>, <span class="comment">// 邻域尺寸</span></span><br><span class="line">			 <span class="number">3</span>, <span class="comment">// 口径尺寸</span></span><br><span class="line">			 <span class="number">0.01</span>); <span class="comment">// Harris 参数</span></span><br><span class="line"><span class="comment">// 对角点强度阈值化</span></span><br><span class="line">Mat harrisCorners;</span><br><span class="line"><span class="keyword">double</span> threshold = <span class="number">0.0001</span>;</span><br><span class="line">threshold(cornerStrength, harrisCorners, threshold, <span class="number">255</span>, THRESH_BINARY_INV);</span><br></pre></td></tr></table></figure>
+<h4 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h4><p>为了使用方法便于调节，和结果更好，定义一个检测 Harris 角点的类。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !defined HARRISD</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HARRISD</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/features2d.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/imgproc.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HarrisDetector</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// 32-bit float image of corner strength</span></span><br><span class="line">	  cv::Mat cornerStrength;</span><br><span class="line">	  <span class="comment">// 32-bit float image of thresholded corners</span></span><br><span class="line">	  cv::Mat cornerTh;</span><br><span class="line">	  <span class="comment">// image of local maxima (internal)</span></span><br><span class="line">	  cv::Mat localMax;</span><br><span class="line">	  <span class="comment">// size of neighbourhood for derivatives smoothing</span></span><br><span class="line">	  <span class="keyword">int</span> neighborhood; </span><br><span class="line">	  <span class="comment">// aperture for gradient computation</span></span><br><span class="line">	  <span class="keyword">int</span> aperture; </span><br><span class="line">	  <span class="comment">// Harris parameter</span></span><br><span class="line">	  <span class="keyword">double</span> k;</span><br><span class="line">	  <span class="comment">// maximum strength for threshold computation</span></span><br><span class="line">	  <span class="keyword">double</span> maxStrength;</span><br><span class="line">	  <span class="comment">// calculated threshold (internal)</span></span><br><span class="line">	  <span class="keyword">double</span> threshold;</span><br><span class="line">	  <span class="comment">// size of neighbourhood for non-max suppression</span></span><br><span class="line">	  <span class="keyword">int</span> nonMaxSize; </span><br><span class="line">	  <span class="comment">// kernel for non-max suppression</span></span><br><span class="line">	  cv::Mat kernel;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">	  HarrisDetector() : neighborhood(<span class="number">3</span>), aperture(<span class="number">3</span>), k(<span class="number">0.1</span>), maxStrength(<span class="number">0.0</span>), threshold(<span class="number">0.01</span>), nonMaxSize(<span class="number">3</span>) &#123;</span><br><span class="line">	  <span class="comment">// 用于非最大值抑制的内核</span></span><br><span class="line">		  setLocalMaxWindowSize(nonMaxSize);</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Create kernel used in non-maxima suppression</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">setLocalMaxWindowSize</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  nonMaxSize= size;</span><br><span class="line">		  kernel.create(nonMaxSize,nonMaxSize,CV_8U);</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 计算每个像素的 Harris 值</span></span><br><span class="line">    </span><br><span class="line">	  <span class="comment">// Compute Harris corners</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">detect</span><span class="params">(<span class="keyword">const</span> cv::Mat&amp; image)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">		  <span class="comment">// Harris computation</span></span><br><span class="line">		  cv::cornerHarris(image,cornerStrength,</span><br><span class="line">		             neighborhood,<span class="comment">// neighborhood size</span></span><br><span class="line">					 aperture,     <span class="comment">// aperture size</span></span><br><span class="line">					 k);           <span class="comment">// Harris parameter</span></span><br><span class="line">	</span><br><span class="line">		  <span class="comment">// internal threshold computation</span></span><br><span class="line">		  cv::minMaxLoc(cornerStrength,<span class="number">0</span>,&amp;maxStrength);</span><br><span class="line"></span><br><span class="line">		  <span class="comment">// local maxima detection</span></span><br><span class="line">		  cv::Mat dilated;  <span class="comment">// temporary image</span></span><br><span class="line">		  cv::dilate(cornerStrength,dilated,cv::Mat());</span><br><span class="line">		  cv::compare(cornerStrength,dilated,localMax,cv::CMP_EQ);</span><br><span class="line">	  &#125;</span><br><span class="line">    </span><br><span class="line">      <span class="comment">// 用指定阈值获取特征点。阈值的可选范围取决于选择的参数，所以阈值被作为质量等级，用最大Harris值的一个比例值表示。</span></span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Get the corner map from the computed Harris values</span></span><br><span class="line">	  <span class="function">cv::Mat <span class="title">getCornerMap</span><span class="params">(<span class="keyword">double</span> qualityLevel)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  cv::Mat cornerMap;</span><br><span class="line"></span><br><span class="line">		  <span class="comment">// thresholding the corner strength</span></span><br><span class="line">		  threshold= qualityLevel*maxStrength;</span><br><span class="line">		  cv::threshold(cornerStrength,cornerTh,threshold,<span class="number">255</span>,cv::THRESH_BINARY);</span><br><span class="line"></span><br><span class="line">		  <span class="comment">// convert to 8-bit image</span></span><br><span class="line">		  cornerTh.convertTo(cornerMap,CV_8U);</span><br><span class="line">	</span><br><span class="line">		  <span class="comment">// non-maxima suppression</span></span><br><span class="line">		  cv::bitwise_and(cornerMap,localMax,cornerMap);</span><br><span class="line"></span><br><span class="line">		  <span class="keyword">return</span> cornerMap;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Get the feature points vector from the computed Harris values</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">getCorners</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt; &amp;points, <span class="keyword">double</span> qualityLevel)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="comment">// Get the corner map</span></span><br><span class="line">		  cv::Mat cornerMap= getCornerMap(qualityLevel);</span><br><span class="line">		  <span class="comment">// Get the corners</span></span><br><span class="line">		  getCorners(points, cornerMap);</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Get the feature points vector from the computed corner map</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">getCorners</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt; &amp;points, <span class="keyword">const</span> cv::Mat&amp; cornerMap)</span> </span>&#123;</span><br><span class="line">			  </span><br><span class="line">		  <span class="comment">// Iterate over the pixels to obtain all feature points</span></span><br><span class="line">		  <span class="keyword">for</span>( <span class="keyword">int</span> y = <span class="number">0</span>; y &lt; cornerMap.rows; y++ ) &#123;</span><br><span class="line">    </span><br><span class="line">			  <span class="keyword">const</span> uchar* rowPtr = cornerMap.ptr&lt;uchar&gt;(y);</span><br><span class="line">    </span><br><span class="line">			  <span class="keyword">for</span>( <span class="keyword">int</span> x = <span class="number">0</span>; x &lt; cornerMap.cols; x++ ) &#123;</span><br><span class="line"></span><br><span class="line">				  <span class="comment">// if it is a feature point</span></span><br><span class="line">				  <span class="keyword">if</span> (rowPtr[x]) &#123;</span><br><span class="line"></span><br><span class="line">					  points.push_back(cv::Point(x,y));</span><br><span class="line">				  &#125;</span><br><span class="line">			  &#125; </span><br><span class="line">		  &#125;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">// Draw circles at feature point locations on an image</span></span><br><span class="line">	  <span class="function"><span class="keyword">void</span> <span class="title">drawOnImage</span><span class="params">(cv::Mat &amp;image, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt; &amp;points, cv::Scalar color= cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>), <span class="keyword">int</span> radius=<span class="number">3</span>, <span class="keyword">int</span> thickness=<span class="number">1</span>)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt;::const_iterator it= points.begin();</span><br><span class="line"></span><br><span class="line">		  <span class="comment">// for all corners</span></span><br><span class="line">		  <span class="keyword">while</span> (it!=points.end()) &#123;</span><br><span class="line"></span><br><span class="line">			  <span class="comment">// draw a circle at each corner location</span></span><br><span class="line">			  cv::circle(image,*it,radius,color,thickness);</span><br><span class="line">			  ++it;</span><br><span class="line">		  &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="类的使用"><a href="#类的使用" class="headerlink" title="类的使用"></a>类的使用</h4><h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create Harris detector instance</span></span><br><span class="line">HarrisDetector harris;</span><br><span class="line"><span class="comment">// Compute Harris values</span></span><br><span class="line">harris.detect(image);</span><br><span class="line"><span class="comment">// Detect Harris corners</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt; pts;</span><br><span class="line">harris.getCorners(pts,<span class="number">0.02</span>);</span><br><span class="line"><span class="comment">// Draw Harris corners</span></span><br><span class="line">harris.drawOnImage(image,pts);</span><br></pre></td></tr></table></figure>
+<h5 id="适合跟踪的特征-GFTT"><a href="#适合跟踪的特征-GFTT" class="headerlink" title="适合跟踪的特征 GFTT"></a>适合跟踪的特征 GFTT</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GFTT:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Read input image</span></span><br><span class="line">image= cv::imread(<span class="string">&quot;church01.jpg&quot;</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Compute good features to track</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::KeyPoint&gt; keypoints;</span><br><span class="line"><span class="comment">// GFTT detector</span></span><br><span class="line">cv::Ptr&lt;cv::GFTTDetector&gt; ptrGFTT = cv::GFTTDetector::create(</span><br><span class="line">		<span class="number">500</span>,	<span class="comment">// maximum number of keypoints to be returned</span></span><br><span class="line">		<span class="number">0.01</span>,	<span class="comment">// quality level</span></span><br><span class="line">		<span class="number">10</span>);	<span class="comment">// minimum allowed distance between points	  </span></span><br><span class="line"><span class="comment">// detect the GFTT</span></span><br><span class="line">ptrGFTT-&gt;detect(image,keypoints);</span><br><span class="line"></span><br><span class="line"><span class="comment">// for all keypoints</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::KeyPoint&gt;::const_iterator it= keypoints.begin();</span><br><span class="line"><span class="keyword">while</span> (it!=keypoints.end()) &#123;</span><br><span class="line">	<span class="comment">// draw a circle at each corner location</span></span><br><span class="line">	cv::circle(image,it-&gt;pt,<span class="number">3</span>,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),<span class="number">1</span>);</span><br><span class="line">	++it;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;GFTT&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;GFTT&quot;</span>,image);</span><br></pre></td></tr></table></figure>
+<h3 id="快速检测特征"><a href="#快速检测特征" class="headerlink" title="快速检测特征"></a>快速检测特征</h3><h4 id="Fast-加速分割测试获得特征"><a href="#Fast-加速分割测试获得特征" class="headerlink" title="Fast (加速分割测试获得特征)"></a>Fast (加速分割测试获得特征)</h4><h5 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FAST feature:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Read input image</span></span><br><span class="line">image= cv::imread(<span class="string">&quot;church01.jpg&quot;</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line">keypoints.clear();</span><br><span class="line"><span class="comment">// FAST detector</span></span><br><span class="line">cv::Ptr&lt;cv::FastFeatureDetector&gt; ptrFAST = cv::FastFeatureDetector::create(<span class="number">40</span>);</span><br><span class="line"><span class="comment">// detect the keypoints</span></span><br><span class="line">ptrFAST-&gt;detect(image,keypoints);</span><br><span class="line"><span class="comment">// draw the keypoints</span></span><br><span class="line">	cv::drawKeypoints(image,keypoints,image,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of keypoints (FAST): &quot;</span> &lt;&lt; keypoints.size() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;FAST&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;FAST&quot;</span>,image);</span><br></pre></td></tr></table></figure>
+<h5 id="将图像分割成网格状，对每个小图像进行单独检测。使特征点分布均匀"><a href="#将图像分割成网格状，对每个小图像进行单独检测。使特征点分布均匀" class="headerlink" title="将图像分割成网格状，对每个小图像进行单独检测。使特征点分布均匀"></a>将图像分割成网格状，对每个小图像进行单独检测。使特征点分布均匀</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The final vector of keypoints</span></span><br><span class="line">keypoints.clear();</span><br><span class="line"><span class="comment">// detect on each grid</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vstep; i++)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; hstep; j++) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// create ROI over current grid</span></span><br><span class="line">		imageROI = image(cv::Rect(j*hsize, i*vsize, hsize, vsize));</span><br><span class="line">		<span class="comment">// detect the keypoints in grid</span></span><br><span class="line">		gridpoints.clear();</span><br><span class="line">		ptrFAST-&gt;detect(imageROI, gridpoints);</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of FAST in grid &quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; j &lt;&lt; <span class="string">&quot;: &quot;</span> &lt;&lt; gridpoints.size() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">if</span> (gridpoints.size() &gt; subtotal) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> it = gridpoints.begin(); it != gridpoints.begin() + subtotal; ++it) &#123;</span><br><span class="line">				<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt; it-&gt;response &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get the strongest FAST features</span></span><br><span class="line">		<span class="function"><span class="keyword">auto</span> <span class="title">itEnd</span><span class="params">(gridpoints.end())</span></span>;</span><br><span class="line">		<span class="keyword">if</span> (gridpoints.size() &gt; subtotal) &#123; <span class="comment">// select the strongest features</span></span><br><span class="line">			<span class="built_in">std</span>::nth_element(gridpoints.begin(), gridpoints.begin() + subtotal, gridpoints.end(), [](cv::KeyPoint&amp; a, cv::KeyPoint&amp; b) &#123;<span class="keyword">return</span> a.response &gt; b.response; &#125;);</span><br><span class="line">			itEnd = gridpoints.begin() + subtotal;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// add them to the global keypoint vector</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> it = gridpoints.begin(); it != itEnd; ++it) &#123;</span><br><span class="line">            it-&gt;pt += cv::Point2f(j*hsize, i*vsize); <span class="comment">// convert to image coordinates</span></span><br><span class="line">			keypoints.push_back(*it);</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt;it-&gt;response &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// draw the keypoints</span></span><br><span class="line">cv::drawKeypoints(image, keypoints, image, cv::Scalar(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;FAST Features (grid)&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;FAST Features (grid)&quot;</span>, image);</span><br></pre></td></tr></table></figure>
+<h3 id="尺度不变特征的检测"><a href="#尺度不变特征的检测" class="headerlink" title="尺度不变特征的检测"></a>尺度不变特征的检测</h3><h4 id="SURF-amp-SIFT"><a href="#SURF-amp-SIFT" class="headerlink" title="SURF &amp; SIFT"></a>SURF &amp; SIFT</h4><p><a class="link"   target="_blank" rel="noopener" href="https://evaqwq.github.io/2021/08/02/OPENCV1-5/" >https://evaqwq.github.io/2021/08/02/OPENCV1-5/<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SURF:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Read input image</span></span><br><span class="line">image = cv::imread(<span class="string">&quot;church01.jpg&quot;</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">keypoints.clear();</span><br><span class="line"><span class="comment">// Construct the SURF feature detector object</span></span><br><span class="line">cv::Ptr&lt;cv::xfeatures2d::SurfFeatureDetector&gt; ptrSURF = cv::xfeatures2d::SurfFeatureDetector::create(<span class="number">2000.0</span>);</span><br><span class="line"><span class="comment">// detect the keypoints</span></span><br><span class="line">ptrSURF-&gt;detect(image, keypoints);</span><br><span class="line">	</span><br><span class="line"><span class="comment">// Detect the SURF features</span></span><br><span class="line">ptrSURF-&gt;detect(image,keypoints);</span><br><span class="line">	</span><br><span class="line">cv::Mat featureImage;</span><br><span class="line">	cv::drawKeypoints(image,keypoints,featureImage,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;SURF&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;SURF&quot;</span>,featureImage);</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of SURF keypoints: &quot;</span> &lt;&lt; keypoints.size() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// Read a second input image</span></span><br><span class="line">image= cv::imread(<span class="string">&quot;church03.jpg&quot;</span>, cv::IMREAD_GRAYSCALE);	</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Detect the SURF features</span></span><br><span class="line">ptrSURF-&gt;detect(image,keypoints);</span><br><span class="line">	</span><br><span class="line">	cv::drawKeypoints(image,keypoints,featureImage,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;SURF (2)&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;SURF (2)&quot;</span>,featureImage);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SIFT:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Read input image</span></span><br><span class="line">image= cv::imread(<span class="string">&quot;church01.jpg&quot;</span>, cv::IMREAD_GRAYSCALE);</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">keypoints.clear();</span><br><span class="line"><span class="comment">// Construct the SIFT feature detector object</span></span><br><span class="line">cv::Ptr&lt;cv::xfeatures2d::SiftFeatureDetector&gt; ptrSIFT = cv::xfeatures2d::SiftFeatureDetector::create();</span><br><span class="line"><span class="comment">// detect the keypoints</span></span><br><span class="line">ptrSIFT-&gt;detect(image, keypoints);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Detect the SIFT features</span></span><br><span class="line">ptrSIFT-&gt;detect(image,keypoints);</span><br><span class="line">	</span><br><span class="line">	cv::drawKeypoints(image,keypoints,featureImage,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;SIFT&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;SIFT&quot;</span>,featureImage);</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of SIFT keypoints: &quot;</span> &lt;&lt; keypoints.size() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br></pre></td></tr></table></figure>
+<h3 id="多尺度FAST特征的检测"><a href="#多尺度FAST特征的检测" class="headerlink" title="多尺度FAST特征的检测"></a>多尺度FAST特征的检测</h3><h4 id="BRISK-二元稳健恒定可拓展关键点"><a href="#BRISK-二元稳健恒定可拓展关键点" class="headerlink" title="BRISK (二元稳健恒定可拓展关键点)"></a>BRISK (二元稳健恒定可拓展关键点)</h4><h5 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BRISK:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Read input image</span></span><br><span class="line">image= cv::imread(<span class="string">&quot;church01.jpg&quot;</span>,CV_LOAD_IMAGE_GRAYSCALE);</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;BRISK&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;BRISK&quot;</span>,featureImage);</span><br><span class="line"></span><br><span class="line">keypoints.clear();</span><br><span class="line"><span class="comment">// Construct another BRISK feature detector object</span></span><br><span class="line">cv::Ptr&lt;cv::BRISK&gt; ptrBRISK = cv::BRISK::create(</span><br><span class="line">		<span class="number">60</span>,  <span class="comment">// threshold for BRISK points to be accepted</span></span><br><span class="line">		<span class="number">5</span>);  <span class="comment">// number of octaves</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Detect the BRISK features</span></span><br><span class="line">ptrBRISK-&gt;detect(image,keypoints);</span><br><span class="line">	</span><br><span class="line">	cv::drawKeypoints(image,keypoints,featureImage,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;BRISK&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;BRISK&quot;</span>, featureImage);</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of BRISK keypoints: &quot;</span> &lt;&lt; keypoints.size() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br></pre></td></tr></table></figure>
+<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>BRISK 不仅是一个特征点检测器，它还包含了描述每个被检测关键点的邻域的过程。</p>
+<p>为了在不同尺度下检测兴趣点，该算法首先通过两个下采样过程后见一个图像金字塔。</p>
+<p><img src="\img\OpenCV\pyramid.JPG" style="zoom:20%;" /></p>
+<p>第一个过程从原始图像尺寸开始，然后每一图层（八度）减少一半。第二个过程先将原始图像的尺寸除以1.5得到第一幅图像，然后在这副图像的基础上每一层减少一半，两个过程产生的图层交替在一起。</p>
+<p>然后在该金字塔的所有图像上应用FAST特征检测器，提取关键点的条件与SIFT算法类似。首先，将一个像素与相邻的八个像素之一进行强度值的比较，只有是局部最大值的像素才可能成为关键点。这个条件满足后，比较这个点与上下两层的相邻像素的评分；如果它的评分在尺度上也更高，那么就认为它是一个兴趣点。</p>
+<p>该算法的关键在于，不同图层具有不同的分辨率。为了精确定位每个关键点，算法需要在尺度和空间两个方面进行插值。</p>
+<p>插值基于FAST关键点评分。在空间方面，在3*3的邻域上进行插值；在尺度方面，计算要符合一个一维抛物线，该抛物线在尺度坐标轴上，穿过当前点和上下两层的两个局部关键点，这个关键点在尺度上的位置见前面的图片。</p>
+<h4 id="ORB-定向FAST-和-旋转BRIEF"><a href="#ORB-定向FAST-和-旋转BRIEF" class="headerlink" title="ORB (定向FAST 和 旋转BRIEF)"></a>ORB (定向FAST 和 旋转BRIEF)</h4><h5 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ORB:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Read input image</span></span><br><span class="line">image= cv::imread(<span class="string">&quot;church01.jpg&quot;</span>,CV_LOAD_IMAGE_GRAYSCALE);</span><br><span class="line"><span class="comment">// rotate the image (to produce a horizontal image)</span></span><br><span class="line">cv::transpose(image, image);</span><br><span class="line">cv::flip(image, image, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">keypoints.clear();</span><br><span class="line"><span class="comment">// Construct the BRISK feature detector object</span></span><br><span class="line">cv::Ptr&lt;cv::ORB&gt; ptrORB = cv::ORB::create(<span class="number">75</span>, <span class="comment">// total number of keypoints</span></span><br><span class="line">										  <span class="number">1.2</span>, <span class="comment">// scale factor between layers</span></span><br><span class="line">		                                  <span class="number">8</span>);  <span class="comment">// number of layers in pyramid</span></span><br><span class="line"><span class="comment">// detect the keypoints</span></span><br><span class="line">ptrORB-&gt;detect(image, keypoints);</span><br><span class="line">	</span><br><span class="line">	cv::drawKeypoints(image,keypoints,featureImage,cv::Scalar(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Display the keypoints</span></span><br><span class="line">cv::namedWindow(<span class="string">&quot;ORB&quot;</span>);</span><br><span class="line">cv::imshow(<span class="string">&quot;ORB&quot;</span>,featureImage);</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of ORB keypoints: &quot;</span> &lt;&lt; keypoints.size() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：OpenCV (检测兴趣点)</li>
+        <li>Post author：Eva.Q</li>
+        <li>Create time：2021-08-10 11:15:09</li>
+        <li>
+            Post link：https://qyy/2021/08/10/OPENCV1-11/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/08/11/%E5%B2%81%E6%9C%88%E7%A5%9E%E5%81%B7/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">岁月神偷</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/08/09/OPENCV1-10/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenCV (提取直线、轮廓和区域)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '9zmOV2kEQ9zus2ce5RmpB8Vk-gzGzoHsz',
+                    appKey: 'MFrrae4FNMoBr993P56NRg0j',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'Speak something ~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+
+                        let author = 'Eva.Q';
+                        author && (author = author.toLocaleLowerCase());
+
+                        for (let vcard of vcards) {
+                            const vnick = vcard.querySelector('.vhead .vnick');
+                            if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                                vnick.innerHTML = `${author} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2023 <i class="fas fa-heart icon-animate"></i> <a href="/">Eva.Q</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E8%A7%92%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">检测图像中的角点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">创建类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">类的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%82%E5%90%88%E8%B7%9F%E8%B8%AA%E7%9A%84%E7%89%B9%E5%BE%81-GFTT"><span class="nav-number">1.3.2.</span> <span class="nav-text">适合跟踪的特征 GFTT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%A3%80%E6%B5%8B%E7%89%B9%E5%BE%81"><span class="nav-number">2.</span> <span class="nav-text">快速检测特征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fast-%E5%8A%A0%E9%80%9F%E5%88%86%E5%89%B2%E6%B5%8B%E8%AF%95%E8%8E%B7%E5%BE%97%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.</span> <span class="nav-text">Fast (加速分割测试获得特征)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%86%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%88%90%E7%BD%91%E6%A0%BC%E7%8A%B6%EF%BC%8C%E5%AF%B9%E6%AF%8F%E4%B8%AA%E5%B0%8F%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E7%8B%AC%E6%A3%80%E6%B5%8B%E3%80%82%E4%BD%BF%E7%89%B9%E5%BE%81%E7%82%B9%E5%88%86%E5%B8%83%E5%9D%87%E5%8C%80"><span class="nav-number">2.1.2.</span> <span class="nav-text">将图像分割成网格状，对每个小图像进行单独检测。使特征点分布均匀</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%BA%E5%BA%A6%E4%B8%8D%E5%8F%98%E7%89%B9%E5%BE%81%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">尺度不变特征的检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SURF-amp-SIFT"><span class="nav-number">3.1.</span> <span class="nav-text">SURF &amp; SIFT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%B0%BA%E5%BA%A6FAST%E7%89%B9%E5%BE%81%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="nav-number">4.</span> <span class="nav-text">多尺度FAST特征的检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BRISK-%E4%BA%8C%E5%85%83%E7%A8%B3%E5%81%A5%E6%81%92%E5%AE%9A%E5%8F%AF%E6%8B%93%E5%B1%95%E5%85%B3%E9%94%AE%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">BRISK (二元稳健恒定可拓展关键点)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.1.1.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">4.1.2.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORB-%E5%AE%9A%E5%90%91FAST-%E5%92%8C-%E6%97%8B%E8%BD%ACBRIEF"><span class="nav-number">4.2.</span> <span class="nav-text">ORB (定向FAST 和 旋转BRIEF)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
